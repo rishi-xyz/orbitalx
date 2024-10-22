@@ -1,6 +1,6 @@
 import LogoIcon from "@/assets/logo.svg";
 import MenuIcon from "@/assets/icon-menu.svg";
-import Button from "./Button";
+import HomeButton from "./HomeButton";
 
 const Header = () => {
   return (
@@ -21,7 +21,7 @@ const Header = () => {
           </div>
           {/* Button and Menu */}
           <div className="flex gap-4 items-center">
-            <Button>Try Now</Button>
+            <HomeButton>Try Now</HomeButton>
             {/* Menu Icon */}
             <MenuIcon className="w-6 h-6 md:hidden" /> {/* Ensure icon size fits */}
           </div>

@@ -1,5 +1,5 @@
 "use client";
-import Button from "./Button";
+import HomeButton from "./HomeButton";
 import {motion} from "framer-motion"
 
 const HeroSection = () => {
@@ -76,7 +76,7 @@ const HeroSection = () => {
           Easily transfer crypto across different tokens without swaping
         </p>
         <div className="flex justify-center mt-5">
-          <Button>Start Now</Button>
+          <HomeButton>Start Now</HomeButton>
         </div>
       </div>
     </section>
