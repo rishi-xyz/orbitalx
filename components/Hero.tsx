@@ -69,7 +69,7 @@ const HeroSection = () => {
       <div className="absolute h-2 w-2 top-1/2 left-full bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
 			{/*End ring 3*/}
       <div className="container relative mt-16">
-        <h1 className="text-8xl md:text-[168px] md:leading-none font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text text-center">
+        <h1 className="text-7xl md:text-[168px] md:leading-none font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text text-center">
           OrbitalX
         </h1>
         <p className="text-lg text-white/70 mt-5 text-center md:text-xl max-w-xl mx-auto">
