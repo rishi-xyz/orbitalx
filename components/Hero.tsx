@@ -1,8 +1,10 @@
 "use client";
 import HomeButton from "./HomeButton";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
+  const router = useRouter();
   return (
     <section
       className="h-[492px] md:h-[800px] flex items-center overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
@@ -76,7 +78,9 @@ const HeroSection = () => {
           Easily transfer crypto across different tokens without swaping
         </p>
         <div className="flex justify-center mt-5">
-          <HomeButton>Start Now</HomeButton>
+          <HomeButton onClick={() => {
+            router.push("/transfer")
+          }}>Start Now</HomeButton>
         </div>
       </div>
     </section>

@@ -1,8 +1,11 @@
+"use client"
 import LogoIcon from "@/assets/logo.svg";
 import MenuIcon from "@/assets/icon-menu.svg";
 import HomeButton from "./HomeButton";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <header className="py-4 border-b border-white/15 md:border-none sticky top-0">
       <div className="container mx-auto">
@@ -21,7 +24,9 @@ const Header = () => {
           </div>
           {/* Button and Menu */}
           <div className="flex gap-4 items-center">
-            <HomeButton>Try Now</HomeButton>
+            <HomeButton onClick={() => {
+              router.push("/transfer")
+            }}>Try Now</HomeButton>
             {/* Menu Icon */}
             <MenuIcon className="w-6 h-6 md:hidden" /> {/* Ensure icon size fits */}
           </div>
