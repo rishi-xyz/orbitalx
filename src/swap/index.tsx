@@ -9,7 +9,6 @@ import {
 import React, { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Token from "@/components/token";
-import { ChevronDown } from "lucide-react";
 import { useTokenSelectorModalStore } from "@/src/modals/token-selector/state";
 import { Input } from "@/components/ui/input";
 import { convertMacroToMicro, convertMicroToMacro } from "@andromedaprotocol/andromeda.js";

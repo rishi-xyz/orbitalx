@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import startsBg from "@/assets/stars.png";
-import TransferNavbar from "@/components/layout/TransferNavbar";
 import Layout from "@/components/layout";
 import WalletModal from "@/src/modals/wallet";
 

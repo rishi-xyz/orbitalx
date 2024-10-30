@@ -73,7 +73,7 @@ export const DenomSelector: React.FC<TokenDenomsProps> = ({
 
     useEffect(() => {
         setSelectedDenom(denoms[0]);
-    }, [denoms]);
+    }, [denoms, setSelectedDenom]); // Add setSelectedDenom to the dependency array
 
     const handleDenomsChange = (denomKey: string) => {
         const value = denoms.find((d) => getKeyFromTokenType(d) === denomKey);

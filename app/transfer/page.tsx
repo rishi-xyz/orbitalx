@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import Swap from "@/src/swap";
 import TokenSelectorModal from "@/src/modals/token-selector";
 

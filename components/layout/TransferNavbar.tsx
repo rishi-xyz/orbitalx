@@ -1,6 +1,5 @@
 "use client";
 import WalletModal from "@/src/modals/wallet";
-import { useWalletModalStore } from "@/src/modals/wallet/state";
 
 const TransferNavbar = () => {
   return (

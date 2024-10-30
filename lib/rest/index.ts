@@ -9,12 +9,12 @@ export class RestClient {
         });
     }
 
-    async get(url: string) {
+    async get<T>(url: string): Promise<T> {
         const response = await this._axiosInstance.get(url);
         return response.data;
     }
 
-    async post(url: string, data: any) {
+    async post<T, D>(url: string, data: D): Promise<T> {
         const response = await this._axiosInstance.post(url, data);
         return response.data;
     }
