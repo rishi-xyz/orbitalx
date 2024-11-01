@@ -3,12 +3,20 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import {twMerge} from "tailwind-merge"
 import Providers from "./provider";
+import { siteConfig } from "@/config/site";
 
 const inter = Inter({subsets:["latin"]});
 
 export const metadata: Metadata = {
-  title: "OrbitalX",
-  description: "Different Currency Same Process",
+  title:{
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons:[{
+    url:"/orbitalx-high-resolution-logo-transparent.png",
+    href:"/orbitalx-high-resolution-logo-transparent.png",
+  }]
 };
 
 export default function RootLayout({
