@@ -5,7 +5,7 @@ import { shortenString } from "@/src/utils/string";
 const reactQueryClient = new QueryClient({
     defaultOptions:{
         queries:{
-            // 5 minutes
+            // 5 minutes: set data to be considered fresh for 5 minutes before refetching.
             staleTime:5*60*1000,
         },
         mutations:{
