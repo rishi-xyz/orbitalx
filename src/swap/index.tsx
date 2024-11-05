@@ -24,6 +24,15 @@ import { useExecuteSwap } from "@/src/hooks/rest/useExecuteSwap";
 import { toast } from "sonner";
 import { gqlClient } from "@/lib/gql/client";
 import reactQueryClient from "@/lib/react-query/client";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Swap() {
     const { chain } = useWalletStore();
@@ -203,32 +212,51 @@ export default function Swap() {
                 />
             </div>
 
-            <div className="h-[1px] bg-gray-700 w-full" />
+            <div className="h-[1px] bg-gray-700 w-full  gap-4" />
 
-            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center w-full">
-                <p className="text-gray-400 whitespace-nowrap">Select Route</p>
-                {routesLoading ? "Loading Routes" : routes?.paths?.length === 0 ? "No Routes Found" : (
-                    <Select value={route.join("/")} onValueChange={(r) => setRoute(r.split('/'))}>
-                        <SelectTrigger className="w-full sm:w-[180px] bg-gray-800 border-gray-700 text-white">
-                            {route.length > 0 ? (
-                                <div className="flex flex-row items-center gap-x-2">
-                                    {route.join(" → ")}
-                                </div>
-                            ) : "Select Route"
-                            }
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700 text-white">
-                            {routes?.paths?.map((path) => (
-                                <SelectItem key={path.route.join("/")} value={path.route.join("/")} className="hover:bg-gray-700">
-                                    <div className="flex flex-row items-center gap-x-2">
-                                        {path.route.join(" → ")}
-                                    </div>
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                )}
-            </div>
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button variant="outline">Advance Options</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Advance Settings</DialogTitle>
+                        <DialogDescription>
+                            Make some advance chnages according to your need.
+                        </DialogDescription>
+                    </DialogHeader>
+                    {/*Select Routes */}
+                    <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center w-full">
+                        <p className="text-gray-400 whitespace-nowrap">Select Route</p>
+                        {routesLoading ? "Loading Routes" : routes?.paths?.length === 0 ? "No Routes Found" : (
+                            <Select value={route.join("/")} onValueChange={(r) => setRoute(r.split('/'))}>
+                                <SelectTrigger className="w-full sm:w-[180px] bg-gray-800 border-gray-700 text-white">
+                                    {route.length > 0 ? (
+                                        <div className="flex flex-row items-center gap-x-2">
+                                            {route.join(" → ")}
+                                        </div>
+                                    ) : "Select Route"
+                                    }
+                                </SelectTrigger>
+                                <SelectContent className="bg-gray-800 border-gray-700 text-white">
+                                    {routes?.paths?.map((path) => (
+                                        <SelectItem key={path.route.join("/")} value={path.route.join("/")} className="hover:bg-gray-700">
+                                            <div className="flex flex-row items-center gap-x-2">
+                                                {path.route.join(" → ")}
+                                            </div>
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        )}
+                    </div>
+                    {/*Slippage */}
+                    <div>Slippage</div>
+                    <DialogFooter>
+                        <Button type="submit">Save changes</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
             {/*Dispaly the Transfer if wallet is connected otherwise option to Connect wallet */}
             {chain ? (
                 <div className="w-full">
