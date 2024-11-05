@@ -17,7 +17,7 @@ const Token: React.FC<Props> = ({ token }) => {
 
     return (
         <div className="flex flex-row items-center gap-x-2">
-            <Image src={metadata?.token?.token_metadata_by_id?.image || "/logo.png"} alt={metadata?.token?.token_metadata_by_id?.tokenId ?? "token"} width={20} height={20} />
+            <Image src={metadata?.token?.token_metadata_by_id?.image||""} alt={metadata?.token?.token_metadata_by_id?.tokenId ?? "token"} width={20} height={20} />
             <div className="text-sm">{metadata?.token?.token_metadata_by_id?.displayName}</div>
         </div>
     );

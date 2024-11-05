@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/Hero";
 import {motion} from "framer-motion";
 import startsBg from "@/assets/stars.png";
+import FeaturesSection from "@/components/FeaturesSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -21,6 +23,8 @@ export default function Home() {
     >
     <Header/>
     <HeroSection/>
+    <FeaturesSection/>
+    <Footer/>
     </motion.section>
   );
 }

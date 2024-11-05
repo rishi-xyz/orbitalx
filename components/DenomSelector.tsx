@@ -83,12 +83,12 @@ export const DenomSelector: React.FC<TokenDenomsProps> = ({
     };
 
     return (
-        <div className="flex flex-row gap-x-4  ">
+        <div className="flex flex-col md:flex-row gap-2 p-2 rounded-lg shadow-lg max-w-xs mx-auto">
             <Select
                 value={getKeyFromTokenType(selectedDenom)}
                 onValueChange={handleDenomsChange}
             >
-                <SelectTrigger className="bg-white euclid-gradient-border-grey bg-opacity-5 border">
+                <SelectTrigger className="bg-black bg-opacity-10 border border-white rounded-md shadow-sm">
                     <SelectValue placeholder={"Unsupported Denom"} />
                 </SelectTrigger>
                 <SelectContent>
@@ -115,15 +115,15 @@ export const DenomSelector: React.FC<TokenDenomsProps> = ({
                                 key={getKeyFromTokenType(denom)}
                                 value={getKeyFromTokenType(denom)}
                             >
-                                <div className="flex flex-row gap-2 justify-between w-full  items-center  ">
-                                    <span className="flex-1">{displayValue}</span>
+                                <div className="flex flex-row gap-1 justify-between w-full items-center p-1 hover:bg-white hover:bg-opacity-20 rounded-md transition">
+                                    <span className="flex-1 text-sm">{displayValue}</span>
                                     <span
                                         className={`badge ${"native" in denom
                                             ? "badge-native"
                                             : "voucher" in denom
                                                 ? "badge-voucher"
                                                 : "badge-smart"
-                                            }`}
+                                            } text-xs`}
                                     >
                                         {typeText}
                                     </span>

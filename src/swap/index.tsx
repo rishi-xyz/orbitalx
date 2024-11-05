@@ -157,10 +157,10 @@ export default function Swap() {
                     })}
                     disabled={loading}
                     size='lg'
-                    className="w-full sm:w-auto bg-gray-700 hover:bg-gray-600 text-white transition-colors duration-200"
+                    className="w-full sm:w-auto bg-gray-700 items-center justify-center hover:bg-gray-600 text-white transition-colors duration-200"
                 >
                     {fromToken ? (
-                        <div className="flex flex-row items-center gap-x-2">
+                        <div className="flex flex-row items-center justify-center gap-x-2">
                             <Token token={fromToken} />
                         </div>
                     ) : (
@@ -229,6 +229,7 @@ export default function Swap() {
                     </Select>
                 )}
             </div>
+            {/*Dispaly the Transfer if wallet is connected otherwise option to Connect wallet */}
             {chain ? (
                 <div className="w-full">
                     <PromiseButton
@@ -239,7 +240,7 @@ export default function Swap() {
                         }}
                         className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200"
                     >
-                        Transfer
+                        Swap
                     </PromiseButton>
                 </div>
             ) : (

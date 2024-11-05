@@ -32,14 +32,14 @@ export const BalanceValue: React.FC<BalanceValueProps> = ({
   );
 
   return (
-    <div className="flex flex-row gap-x-4">
-      <div className="flex flex-row items-center gap-2 text-sm">
-        <div className="text-opacity-50 text-white">In wallet:</div>
-        <div>{macroBalance}</div>
+    <div className="flex flex-col md:flex-row gap-2 p-2 bg-gradient-to-r from-green-400/40 to-blue-500/40 rounded-lg shadow-md">
+      <div className="flex flex-row items-center gap-1 text-sm">
+        <div className="text-opacity-70 text-white">Balance:</div>
+        <div className="font-semibold text-white">{macroBalance}</div>
       </div>
       {onMax && (
         <div
-          className="ml-2 font-bold text-sm cursor-pointer underline "
+          className="mt-1 md:mt-0 ml-0 md:ml-2 font-bold text-sm cursor-pointer underline text-white hover:text-opacity-80 transition"
           onClick={() => onMax(balance, decimals)}
         >
           Max

@@ -28,12 +28,8 @@ function TokenSelectorModal() {
                         className="w-full p-2 border rounded-md bg-background text-foreground"
                     />
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4 max-h-[60vh] overflow-y-auto">
-                        {tokens.filter(t => search ? t.toLowerCase().includes(search.toLowerCase()) : true)?.map((token) => (
-                            <div 
-                                key={token} 
-                                onClick={() => handleTokenSelect(token)} 
-                                className="bg-secondary/50 rounded-md p-2 cursor-pointer hover:bg-secondary/70 transition-colors duration-200"
-                            >
+                        {tokens.filter(t => search ? t.includes(search) : true)?.map((token) => (
+                            <div key={token} onClick={() => handleTokenSelect(token)} className="bg-slate-800/50 rounded-md p-2 cursor-pointer hover:bg-slate-800/70">
                                 <Token
                                     key={token}
                                     token={token}

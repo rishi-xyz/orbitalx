@@ -1,10 +1,10 @@
-import { ClerkProvider } from "@clerk/nextjs";
+import Providers from "@/app/(platform)/(root)/provider";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <ClerkProvider>
+        <Providers>
             {children}
-        </ClerkProvider>
+        </Providers>
     );
 };
 
