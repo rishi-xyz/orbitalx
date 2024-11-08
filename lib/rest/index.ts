@@ -20,5 +20,5 @@ export class RestClient {
     }
 }
 
-const restClient = new RestClient(process.env.NEXT_PUBLIC_REST_API_URL!);
+const restClient = new RestClient(process.env.NEXT_PUBLIC_API_URL!);
 export default restClient;

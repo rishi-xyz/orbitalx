@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import startsBg from "@/assets/stars.png";
 import Layout from "@/components/layout";
 import WalletModal from "@/src/modals/wallet";
-import { Suspense } from "react";
 
 const TransferLayout = ({ children }: { children: React.ReactNode }) => {
   return (
