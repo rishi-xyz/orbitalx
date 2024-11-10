@@ -1,8 +1,12 @@
+import DashboardBanner from "@/components/DashboardBanner";
+import DashboardActionButtons from "@/components/DashboardActionButtons";
+
 const DashboardPage = async () => {
   return (
-    <div>
-      <h1>Organization Dashboard</h1>
-    </div>
+    <>
+      <DashboardBanner/>
+      <DashboardActionButtons/>
+    </>
   );
 };
 

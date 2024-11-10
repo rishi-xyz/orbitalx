@@ -2,7 +2,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <ClerkProvider>
+        <ClerkProvider
+        afterSignOutUrl={"/"}
+        >
             {children}
         </ClerkProvider>
     );
