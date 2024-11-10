@@ -15,8 +15,8 @@ import { convertMacroToMicro, convertMicroToMacro } from "@andromedaprotocol/and
 import { useGetRoutes } from "@/src/hooks/rest/useGetRoutes";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import PromiseButton from "@/components/PromiseButton";
-import { DenomSelector } from "@/components/DenomSelector";
-import { BalanceValue } from "@/components/DenomBalance";
+// import { DenomSelector } from "@/components/DenomSelector";
+// import { BalanceValue } from "@/components/DenomBalance";
 import { ITokenType } from "@euclidprotocol/graphql-codegen";
 import { useWalletStore } from "@/src/zustand/wallet";
 import { useWalletModalStore } from "@/src/modals/wallet/state";
@@ -33,6 +33,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { ArrowRightLeft } from "lucide-react";
 
 export default function Swap() {
     const { chain } = useWalletStore();
@@ -142,74 +143,99 @@ export default function Swap() {
 
     return (
         <div className="flex flex-col items-center mt-4 gap-6 w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8 border border-gray-700 rounded-lg p-4 sm:p-6 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-3 gap-y-5 w-full">
-                {(fromToken && chain) && (
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 col-span-full justify-start sm:justify-end">
-                        <BalanceValue
-                            tokenId={fromToken}
-                            selectedDenom={selectedFromDenom}
-                        />
-                        <DenomSelector
-                            selectedDenom={selectedFromDenom}
-                            chainUId={chain?.chain_uid ?? ""}
-                            tokenId={fromToken}
-                            setSelectedDenom={(d) => setSelectedFromDenom(d ?? { voucher: {} })}
-                        />
-                    </div>
+            <div className="flex flex-row justify-between w-full">
+                <div className="flex flex-col w-full mr-2">
+                    {/* {(fromToken && chain) && (
+                        <div className="flex flex-row items-start gap-2 justify-start">
+                            <BalanceValue
+                                tokenId={fromToken}
+                                selectedDenom={selectedFromDenom}
+                            />
+                            <DenomSelector
+                                selectedDenom={selectedFromDenom}
+                                chainUId={chain?.chain_uid ?? ""}
+                                tokenId={fromToken}
+                                setSelectedDenom={(d) => setSelectedFromDenom(d ?? { voucher: {} })}
+                            />
+                        </div>
+                    )} */}
+                    <Button
+                        onClick={() => onOpenModal({
+                            tokens: tokens?.router.all_tokens.tokens ?? [],
+                            title: "Select From Token",
+                            description: "Select the token you want to swap",
+                            onTokenSelect: (token) => { setFromToken(token); },
+                        })}
+                        disabled={loading}
+                        size='lg'
+                        className="w-full bg-gray-700 items-center justify-center hover:bg-gray-600 text-white transition-colors duration-200"
+                    >
+                        {fromToken ? (
+                            <div className="flex flex-row items-center justify-center gap-x-2">
+                                <Token token={fromToken} />
+                            </div>
+                        ) : (
+                            "From Token"
+                        )}
+                    </Button>
+
+                    <Input
+                        value={fromTokenAmount}
+                        onChange={(e) => setFromTokenAmount(e.target.value)}
+                        placeholder="0.00"
+                        className="text-lg h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500"
+                    />
+                </div>
+
+                <div className="flex items-center justify-center">
+                    <ArrowRightLeft className="text-white" />
+                </div>
+
+                <div className="flex flex-col w-full ml-2">
+                    <Button
+                        onClick={() => onOpenModal({
+                            tokens: tokens?.router.all_tokens.tokens ?? [],
+                            title: "Select To Token",
+                            description: "Select the token you want to receive",
+                            onTokenSelect: (token) => { setToToken(token); },
+                        })}
+                        disabled={loading}
+                        size='lg'
+                        className="w-full bg-gray-700 hover:bg-gray-600 text-white transition-colors duration-200"
+                    >
+                        {toToken ? (
+                            <div className="flex flex-row items-center gap-x-2">
+                                <Token token={toToken} />
+                            </div>
+                        ) : (
+                            "To Token"
+                        )}
+                    </Button>
+                    <Input
+                        value={macroAmountOut}
+                        placeholder="0.00"
+                        className="text-lg h-12 bg-gray-800 border-gray-700 text-white"
+                        readOnly
+                        disabled
+                    />
+                </div>
+            </div>
+
+            <div className="w-full">
+                {chain ? (
+                    <PromiseButton
+                        disabled={isPending || !fromToken || !toToken || microFromValue === "0" || !route}
+                        onClick={() => {
+                            if (isPending || !fromToken || !toToken || microFromValue === "0" || !route) return;
+                            return handleSwap();
+                        }}
+                        className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200"
+                    >
+                        Swap
+                    </PromiseButton>
+                ) : (
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200" onClick={() => onModalStateChange(true)}>Connect Chain</Button>
                 )}
-                <Button
-                    onClick={() => onOpenModal({
-                        tokens: tokens?.router.all_tokens.tokens ?? [],
-                        title: "Select From Token",
-                        description: "Select the token you want to swap",
-                        onTokenSelect: (token) => { setFromToken(token); },
-                    })}
-                    disabled={loading}
-                    size='lg'
-                    className="w-full sm:w-auto bg-gray-700 items-center justify-center hover:bg-gray-600 text-white transition-colors duration-200"
-                >
-                    {fromToken ? (
-                        <div className="flex flex-row items-center justify-center gap-x-2">
-                            <Token token={fromToken} />
-                        </div>
-                    ) : (
-                        "From Token"
-                    )}
-                </Button>
-
-                <Input
-                    value={fromTokenAmount}
-                    onChange={(e) => setFromTokenAmount(e.target.value)}
-                    placeholder="0.00"
-                    className="col-span-1 sm:col-span-2 text-lg h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500"
-                />
-
-                <Button
-                    onClick={() => onOpenModal({
-                        tokens: tokens?.router.all_tokens.tokens ?? [],
-                        title: "Select To Token",
-                        description: "Select the token you want to receive",
-                        onTokenSelect: (token) => { setToToken(token); },
-                    })}
-                    disabled={loading}
-                    size='lg'
-                    className="w-full sm:w-auto bg-gray-700 hover:bg-gray-600 text-white transition-colors duration-200"
-                >
-                    {toToken ? (
-                        <div className="flex flex-row items-center gap-x-2">
-                            <Token token={toToken} />
-                        </div>
-                    ) : (
-                        "To Token"
-                    )}
-                </Button>
-                <Input
-                    value={macroAmountOut}
-                    placeholder="0.00"
-                    className="col-span-1 sm:col-span-2 text-lg h-12 bg-gray-800 border-gray-700 text-white"
-                    readOnly
-                    disabled
-                />
             </div>
 
             <div className="h-[1px] bg-gray-700 w-full  gap-4" />
@@ -257,23 +283,6 @@ export default function Swap() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-            {/*Dispaly the Transfer if wallet is connected otherwise option to Connect wallet */}
-            {chain ? (
-                <div className="w-full">
-                    <PromiseButton
-                        disabled={isPending || !fromToken || !toToken || microFromValue === "0" || !route}
-                        onClick={() => {
-                            if (isPending || !fromToken || !toToken || microFromValue === "0" || !route) return;
-                            return handleSwap();
-                        }}
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200"
-                    >
-                        Swap
-                    </PromiseButton>
-                </div>
-            ) : (
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-200" onClick={() => onModalStateChange(true)}>Connect Chain</Button>
-            )}
         </div>
     );
 }
