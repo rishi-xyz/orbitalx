@@ -79,7 +79,7 @@ const HeroSection = () => {
         </p>
         <div className="flex justify-center mt-5">
           <HomeButton onClick={() => {
-            router.push("/transfer")
+            router.push("/select-org")
           }}>Start Now</HomeButton>
         </div>
       </div>

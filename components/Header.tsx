@@ -26,7 +26,7 @@ const Header = () => {
           {/* Button and Menu */}
           <div className="flex gap-4 items-center">
             <HomeButton onClick={() => {
-              router.push("/swap")
+              router.push("/select-org")
             }}>Try Now</HomeButton>
             {/* Menu Icon */}
             <MenuIcon className="w-6 h-6 md:hidden" /> {/* Ensure icon size fits */}
