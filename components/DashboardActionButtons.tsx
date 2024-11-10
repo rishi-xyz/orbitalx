@@ -1,6 +1,5 @@
 import { FC, memo } from "react";
 import { Landmark, ReceiptText, ArrowRightLeft , Send ,ScanQrCode } from "lucide-react"
-import DashboardBanner from "@/components/DashboardBanner";
 import Link from 'next/link';
 
 interface ActionButtonProps {
@@ -21,6 +20,8 @@ const ActionButton: FC<ActionButtonProps> = memo(({ icon: Icon, label, link }) =
     </div>
   );
 });
+
+ActionButton.displayName="ActionButton";
 
 const DashboardActionButtons = () => {
   return (

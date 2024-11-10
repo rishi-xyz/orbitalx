@@ -1,19 +1,6 @@
-import { OrganizationSwitcher, SignedOut, SignInButton } from "@clerk/nextjs";
-
+import { OrganizationSwitcher,} from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
-
-// Import necessary icons and components
 import { FC } from "react";
-import { Search, QrCode, Send, Landmark, BatteryCharging } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import {
-    Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet"
 import DashboradSearchBar from "./DashboradSearchBar";
 
 
