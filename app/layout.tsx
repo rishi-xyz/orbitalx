@@ -29,7 +29,10 @@ export default function RootLayout({
       <body
         className={ twMerge(inter.className,"bg-black text-white antialiased")}
       >
-        <ClerkProvider dynamic>
+        <ClerkProvider dynamic
+        afterMultiSessionSingleSignOutUrl={"/"}
+        afterSignOutUrl={"/"}
+        >
           {children}
         </ClerkProvider>
       </body>
