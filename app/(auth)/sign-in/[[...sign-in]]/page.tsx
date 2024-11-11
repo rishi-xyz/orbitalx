@@ -1,11 +1,8 @@
 "use client";
 import { Loader2 } from 'lucide-react';
 import { ClerkLoaded, ClerkLoading, SignIn } from '@clerk/nextjs';
-import Image from 'next/image';
-import { useRef } from 'react';
-
 export default function Page() {
-  const parallaxRef = useRef(null); // Create a ref for the parallax background
+
 
   return (
     
