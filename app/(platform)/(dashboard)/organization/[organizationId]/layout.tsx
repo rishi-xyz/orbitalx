@@ -1,14 +1,17 @@
 import DashboardNavbar from '@/components/layout/DashboardNavbar'
 import WalletModal from '@/src/modals/wallet'
+import { ClerkProvider } from '@clerk/nextjs'
 import React from 'react'
 
 const OrganizationDashboardlayout = ({children}:{children:React.ReactNode}) => {
   return (
-    <div>
+    <ClerkProvider>
+    
         <DashboardNavbar />
         {children}
         <WalletModal />
-    </div>
+    </ClerkProvider>
+    
   )
 }
 
