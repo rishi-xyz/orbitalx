@@ -4,8 +4,10 @@ import MenuIcon from "@/assets/icon-menu.svg";
 import HomeButton from "./HomeButton";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useAuth } from "@clerk/nextjs";
 
 const Header = () => {
+  const { userId }  = useAuth();
   const router = useRouter();
   return (
     <header className="py-4 border-b border-white/15 md:border-none sticky top-0 z-30">
@@ -26,7 +28,7 @@ const Header = () => {
           {/* Button and Menu */}
           <div className="flex gap-4 items-center">
             <HomeButton onClick={() => {
-              router.push("/select-org")
+              router.push(`/organization/${userId}`)
             }}>Try Now</HomeButton>
             {/* Menu Icon */}
             <MenuIcon className="w-6 h-6 md:hidden" /> {/* Ensure icon size fits */}
