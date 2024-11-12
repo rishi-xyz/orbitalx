@@ -21,7 +21,7 @@ export default function AvtarList() {
       <div className="flex overflow-x-auto space-x-4 justify-center mt-40 space gap-x-6 ">
         {contacts.map((contact, index) => (
           <div key={index} className="flex flex-col items-center">
-            <Avatar className="h-20 w-20  mb-2 ">
+            <Avatar className="h-15 w-12  mb-2 ">
               <AvatarImage src={contact.imageUrl} alt={contact.name} />
               <AvatarFallback>{contact.icon}</AvatarFallback>
             </Avatar>

@@ -168,7 +168,7 @@ export default function Swap() {
                         })}
                         disabled={loading}
                         size='lg'
-                        className="w-full bg-gray-700 items-center justify-center hover:bg-gray-600 text-white transition-colors duration-200"
+                        className="w-full bg-gray-700 items-center justify-center hover:bg-gray-600 text-white transition-colors duration-200 "
                     >
                         {fromToken ? (
                             <div className="flex flex-row items-center justify-center gap-x-2">
@@ -183,7 +183,7 @@ export default function Swap() {
                         value={fromTokenAmount}
                         onChange={(e) => setFromTokenAmount(e.target.value)}
                         placeholder="0.00"
-                        className="text-lg h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500"
+                        className="text-lg h-12 bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 mt-8"
                     />
                 </div>
 
@@ -214,7 +214,7 @@ export default function Swap() {
                     <Input
                         value={macroAmountOut}
                         placeholder="0.00"
-                        className="text-lg h-12 bg-gray-800 border-gray-700 text-white"
+                        className="text-lg h-12 bg-gray-800 border-gray-700 text-white mt-8"
                         readOnly
                         disabled
                     />
