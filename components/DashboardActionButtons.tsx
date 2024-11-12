@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/drawer"
 import Swap from "@/src/swap";
 import TokenSelectorModal from "@/src/modals/token-selector";
-import AvtarList from "./AvtarList";
+
 
 
 interface ActionButtonProps {
