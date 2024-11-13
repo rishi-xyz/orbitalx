@@ -48,10 +48,15 @@ ActionButton.displayName = "ActionButton";
 const DashboardActionButtons = () => {
   return (
     <div className="mx-auto flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-lg mt-4">
+      {/**Scan QR */}
       <ActionButton icon={ScanQrCode} label="Scan" link="/scanqrcode" />
-      <ActionButton icon={Send} label="Pay anyone" link="/payanyone" />
+      {/**Pay Address */}
+      <ActionButton icon={Send} label="Pay Address" link="/payanyone" />
+      {/**Transfer */}
       <ActionButton icon={Landmark} label="Transfer" link="/transfer" />
+      {/**Pay bills */}
       <ActionButton icon={ReceiptText} label="Pay bills" link="/pay-bills" />
+      {/**Swap */}
       <Drawer>
         <DrawerTrigger>
           <ActionButton icon={ArrowRightLeft} label="Swap" />

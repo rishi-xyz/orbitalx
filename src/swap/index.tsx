@@ -15,8 +15,8 @@ import { convertMacroToMicro, convertMicroToMacro } from "@andromedaprotocol/and
 import { useGetRoutes } from "@/src/hooks/rest/useGetRoutes";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import PromiseButton from "@/components/PromiseButton";
-// import { DenomSelector } from "@/components/DenomSelector";
-// import { BalanceValue } from "@/components/DenomBalance";
+import { DenomSelector } from "@/components/DenomSelector";
+import { BalanceValue } from "@/components/DenomBalance";
 import { ITokenType } from "@euclidprotocol/graphql-codegen";
 import { useWalletStore } from "@/src/zustand/wallet";
 import { useWalletModalStore } from "@/src/modals/wallet/state";
@@ -145,20 +145,7 @@ export default function Swap() {
         <div className="flex flex-col items-center mt-4 gap-6 w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8 border border-gray-700 rounded-lg p-4 sm:p-6 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl">
             <div className="flex flex-row justify-between w-full">
                 <div className="flex flex-col w-full mr-2">
-                    {/* {(fromToken && chain) && (
-                        <div className="flex flex-row items-start gap-2 justify-start">
-                            <BalanceValue
-                                tokenId={fromToken}
-                                selectedDenom={selectedFromDenom}
-                            />
-                            <DenomSelector
-                                selectedDenom={selectedFromDenom}
-                                chainUId={chain?.chain_uid ?? ""}
-                                tokenId={fromToken}
-                                setSelectedDenom={(d) => setSelectedFromDenom(d ?? { voucher: {} })}
-                            />
-                        </div>
-                    )} */}
+                    
                     <Button
                         onClick={() => onOpenModal({
                             tokens: tokens?.router.all_tokens.tokens ?? [],
@@ -251,6 +238,21 @@ export default function Swap() {
                             Make some advance chnages according to your need.
                         </DialogDescription>
                     </DialogHeader>
+                    {/**Denom selector and balance */}
+                    {(fromToken && chain) && (
+                        <div className="flex flex-row items-start gap-2 justify-start">
+                            <BalanceValue
+                                tokenId={fromToken}
+                                selectedDenom={selectedFromDenom}
+                            />
+                            <DenomSelector
+                                selectedDenom={selectedFromDenom}
+                                chainUId={chain?.chain_uid ?? ""}
+                                tokenId={fromToken}
+                                setSelectedDenom={(d) => setSelectedFromDenom(d ?? { voucher: {} })}
+                            />
+                        </div>
+                    )}
                     {/*Select Routes */}
                     <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center w-full">
                         <p className="text-gray-400 whitespace-nowrap">Select Route</p>
