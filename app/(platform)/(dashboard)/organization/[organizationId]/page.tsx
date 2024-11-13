@@ -1,14 +1,16 @@
 import DashboardBanner from "@/components/DashboardBanner";
 import DashboardActionButtons from "@/components/DashboardActionButtons";
 import TokenSelectorModal from "@/src/modals/token-selector";
-import AvtarList from "@/components/People";
+import PeopleSection from "@/components/People";
+import BussinessSection from "@/components/Businesses";
 
 const DashboardPage = async () => {
   return (
     <>
       <DashboardBanner/>
       <DashboardActionButtons/>
-      <AvtarList/>
+      <PeopleSection />
+      <BussinessSection />
       <TokenSelectorModal/>
     </>
   );

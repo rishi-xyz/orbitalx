@@ -1,4 +1,4 @@
-import {Home, Inbox, Search, Settings} from "lucide-react"
+import {Home, Search, Settings,History} from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -96,8 +96,8 @@ const items = [
   },
   {
     title: "Transation History",
-    url: "#",
-    icon: Inbox,
+    url: "/transactions",
+    icon: History,
   },
   {
     title: "Search",
@@ -106,7 +106,7 @@ const items = [
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/people",
     icon: Settings,
   },
 ]
