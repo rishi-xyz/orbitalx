@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import startsBg from "@/assets/stars.png";
 import Providers from "../(root)/provider";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {

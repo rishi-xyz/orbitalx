@@ -1,5 +1,4 @@
 import { OrganizationSwitcher,} from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
 import { FC } from "react";
 import DashboradSearchBar from "./DashboradSearchBar";
 import { SidebarTrigger } from "../ui/sidebar";

@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 
 export default function PeopleSection() {
   const [visibleCount, setVisibleCount] = useState(9);
-
-  // Dynamically set visible count based on screen size
   useEffect(() => {
     const updateVisibleCount = () => {
       setVisibleCount(window.innerWidth >= 1024 ? 9 : 4);
@@ -16,11 +14,7 @@ export default function PeopleSection() {
 
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
-
-  const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + (window.innerWidth >= 1024 ? 9 : 4));
-  };
-
+  
   return (
     <div className="mx-auto max-w-7xl w-full mt-11 space-y-8">
       <h2 className="text-3xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mt-24 text-center mb-7 ">

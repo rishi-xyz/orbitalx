@@ -1,6 +1,5 @@
 import { FC, memo } from "react";
 import { Landmark, ReceiptText, ArrowRightLeft, Send, ScanQrCode } from "lucide-react"
-import Link from 'next/link';
 
 import {
   Drawer,
