@@ -27,7 +27,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <SidebarProvider>
           <AppSidebar />
           <main>
-            <SidebarTrigger />
               {children}
           </main>
         </SidebarProvider>
