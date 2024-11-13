@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import startsBg from "@/assets/stars.png";
 import Providers from "../(root)/provider";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/ui/app-sidebar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -22,7 +24,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       className="h-max"
     >
       <Providers>
-        {children}
+        <SidebarProvider>
+          <AppSidebar />
+          <main>
+              {children}
+          </main>
+        </SidebarProvider>
       </Providers>
     </motion.section>
   );
