@@ -23,7 +23,7 @@ export default function BussinessSection() {
       <div className="flex overflow-x-auto space-x-4 justify-center mt-40 gap-x-6">
         {contacts.slice(0, visibleCount).map((contact, index) => (
           <div key={index} className="flex flex-col items-center">
-            <Avatar className="h-17 w-14 mb-2   transform transition-transform duration-200 hover:scale-150 hover:shadow-lg">
+            <Avatar className="h-17 w-14 mb-2   transform transition-transform duration-200 hover:scale-125 hover:shadow-lg">
               <AvatarImage src={contact.imageUrl} alt={contact.name} />
               <AvatarFallback>{contact.icon}</AvatarFallback>
             </Avatar>
