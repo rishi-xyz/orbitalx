@@ -14,9 +14,9 @@ const FeaturesSection = () => {
                             We provide all the advantages that can simplify all your transactions without any further requirements.
                         </p>
                         <div className="flex flex-row items-center justify-center gap-2 text-base font-semibold text-purple-400 lg:justify-start hover:text-purple-300 transition-colors">
-                            Our Products 
+                            Our Products
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.5 15L11.0858 11.4142C11.7525 10.7475 12.0858 10.4142 12.0858 10C12.0858 9.58579 11.7525 9.25245 11.0858 8.58579L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M7.5 15L11.0858 11.4142C11.7525 10.7475 12.0858 10.4142 12.0858 10C12.0858 9.58579 11.7525 9.25245 11.0858 8.58579L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </div>
                     </div>
@@ -26,7 +26,7 @@ const FeaturesSection = () => {
                     {features.map((feature, index) => (
                         <div key={index} className="group relative w-full bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 xl:p-7 xl:w-1/4 hover:bg-purple-900/50 border border-purple-500/10">
                             <div className="bg-purple-900/30 rounded-full flex justify-center items-center mb-5 w-14 h-14">
-                                <feature.icon className="w-8 h-8 text-purple-400 group-hover:text-purple-300 transition-colors" 
+                                <feature.icon className="w-8 h-8 text-purple-400 group-hover:text-purple-300 transition-colors"
                                     aria-hidden="true"
                                 />
                             </div>
@@ -43,6 +43,7 @@ const FeaturesSection = () => {
                 </div>
             </div>
         </section>
+
     );
 }
 

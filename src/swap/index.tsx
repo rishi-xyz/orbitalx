@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/dialog";
 import { ArrowRightLeft } from "lucide-react";
 
+
 export default function Swap() {
     const { chain } = useWalletStore();
     const { onModalStateChange } = useWalletModalStore();
@@ -106,6 +107,7 @@ export default function Swap() {
 
     const { mutateAsync: executeSwap, isPending } = useExecuteSwap();
 
+
     const handleSwap = async () => {
         try {
             const tx = await executeSwap({
@@ -131,12 +133,18 @@ export default function Swap() {
             await reactQueryClient.invalidateQueries({
                 queryKey: ["rest", "routes"]
             })
+
             console.log("Swap successful:", tx.transactionHash);
 
-        } catch (error) {
-            // @ts-expect-error Error is not typed
-            toast.error(`Swap failed: ${error.message}`);
-            console.error("Swap failed:", error);
+
+        } catch (error: any) {
+            // await <Popover>
+            //     <PopoverTrigger>Open</PopoverTrigger>
+            //     <PopoverContent>{`Swap failed due to ${error}.`}</PopoverContent>
+            // </Popover>
+
+
+            console.log("errorrrr")
         }
     }
 
@@ -145,7 +153,7 @@ export default function Swap() {
         <div className="flex flex-col items-center mt-4 gap-6 w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8 border border-gray-700 rounded-lg p-4 sm:p-6 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl">
             <div className="flex flex-row justify-between w-full">
                 <div className="flex flex-col w-full mr-2">
-                    
+
                     <Button
                         onClick={() => onOpenModal({
                             tokens: tokens?.router.all_tokens.tokens ?? [],
