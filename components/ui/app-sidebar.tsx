@@ -17,10 +17,12 @@ export function AppSidebar() {
   return (
     <Sidebar  className="bg-transparent/70 md:bg-transparent">
       <SidebarHeader className=" flex flex-row m-2 p-4">
-        <div className="text-xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mr-6">
+        <div className="text-xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mr-6 transform transition-transform duration-200 hover:scale-110">
           OrbitalX
         </div>
-        <UserButton />
+        <div className="transform transition-transform duration-200 hover:scale-125 mr-6">
+               <UserButton />
+          </div>
       </SidebarHeader>
       <SidebarContent className="flex flex-col justify-between h-full p-2">
         <div>
@@ -31,8 +33,8 @@ export function AppSidebar() {
             <SidebarGroupContent className="flex items-center justify-center m-4 flex-wrap">
               <SidebarMenu >
                 {items.slice(0, 2).map((item) => (
-                  <SidebarMenuItem key={item.title} className="rounded-lg">
-                    <SidebarMenuButton asChild className="hover:bg-purple-500/60">
+                  <SidebarMenuItem key={item.title} className="rounded-lg mb-3 ">
+                    <SidebarMenuButton asChild className="flex gap-3 items-center p-6 hover:bg-purple-900/50 border border-purple-500/10 transform transition-transform duration-200 hover:scale-110">
                       <a href={item.url} className="flex items-center">
                         <item.icon className="mr-2" />
                         <span className="text-sm md:text-base">{item.title}</span>
@@ -44,14 +46,14 @@ export function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
           <SidebarGroup>
-            <SidebarGroupLabel className="text-sm md:text-base font-bold leading-tight lg:mb-auto bg-purple-400 bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text p-2">
+            <SidebarGroupLabel className="text-sm md:text-base font-bold leading-tight lg:mb-auto bg-purple-700 bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text p-2">
               Users
             </SidebarGroupLabel>
             <SidebarGroupContent className="flex items-center justify-center m-4 flex-wrap">
               <SidebarMenu>
                 {items.slice(2).map((item) => (
-                  <SidebarMenuItem key={item.title} className=" rounded-lg">
-                    <SidebarMenuButton asChild className="hover:bg-purple-500/60 rounded-lg">
+                  <SidebarMenuItem key={item.title} className=" rounded-lg mb-3 mr-1">
+                    <SidebarMenuButton asChild className="flex gap-3 items-center p-6  hover:bg-purple-900/50 border border-purple-500/10 transform transition-transform duration-200 hover:scale-110 ">
                       <a href={item.url} className="flex items-center">
                         <item.icon className="mr-2" />
                         <span className="text-sm md:text-base">{item.title}</span>
@@ -95,7 +97,7 @@ const items = [
     icon: Home,
   },
   {
-    title: "Transation History",
+    title: "Transactions",
     url: "/transactions",
     icon: History,
   },

@@ -33,7 +33,7 @@ interface ActionButtonProps {
 
 const ActionButton: FC<ActionButtonProps> = memo(({ icon: Icon, label }) => {
   return (
-    <div className="flex flex-col items-center w-full sm:w-24 h-24 sm:h-24 mx-auto max-w-xs bg-gray-800/70 backdrop-blur-md rounded-2xl p-2 sm:p-4 transition-all duration-300 hover:bg-purple-700/70 border border-purple-600/20">
+    <div className="flex flex-col items-center w-full sm:w-24 h-24 sm:h-24 mx-auto max-w-xs bg-gray-800/70  hover:bg-purple-900/50 border border-purple-500/10 backdrop-blur-md rounded-2xl p-6 mr-5 sm:p-4 transition-transform duration-200 hover:scale-125   ">
       <div className="w-auto items-center justify-center flex flex-col">
         <Icon className="w-6 h-6 sm:w-8 sm:h-8 mb-1 sm:mb-2 text-white" />
         <p className="text-xs sm:text-sm text-center">{label}</p>
@@ -116,7 +116,7 @@ const DashboardActionButtons = () => {
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-0 text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">Swap</DrawerTitle>
+            <DrawerTitle className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-0 text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text ">Swap</DrawerTitle>
             <DrawerDescription>
               <Swap />
               <TokenSelectorModal />
