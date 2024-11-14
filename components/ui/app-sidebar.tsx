@@ -12,6 +12,11 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
+import { DashboardIcon } from "@radix-ui/react-icons"
+
+
+
+
 
 export function AppSidebar() {
   return (
@@ -32,7 +37,7 @@ export function AppSidebar() {
             </SidebarGroupLabel>
             <SidebarGroupContent className="flex items-center justify-center m-4 flex-wrap">
               <SidebarMenu >
-                {items.slice(0, 2).map((item) => (
+                {items.slice(0, 3).map((item) => (
                   <SidebarMenuItem key={item.title} className="rounded-lg mb-3 ">
                     <SidebarMenuButton asChild className="flex gap-3 items-center p-6 hover:bg-purple-900/50 border border-purple-500/10 transform transition-transform duration-200 hover:scale-110">
                       <a href={item.url} className="flex items-center">
@@ -51,7 +56,7 @@ export function AppSidebar() {
             </SidebarGroupLabel>
             <SidebarGroupContent className="flex items-center justify-center m-4 flex-wrap">
               <SidebarMenu>
-                {items.slice(2).map((item) => (
+                {items.slice(3).map((item) => (
                   <SidebarMenuItem key={item.title} className=" rounded-lg mb-3 mr-1">
                     <SidebarMenuButton asChild className="flex gap-3 items-center p-6  hover:bg-purple-900/50 border border-purple-500/10 transform transition-transform duration-200 hover:scale-110 ">
                       <a href={item.url} className="flex items-center">
@@ -100,6 +105,11 @@ const items = [
     title: "Transactions",
     url: "/transactions",
     icon: History,
+  },
+  {
+    title: "Dashboard",
+    url: "/",
+    icon: DashboardIcon,
   },
   {
     title: "Contacts",

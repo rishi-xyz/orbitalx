@@ -6,29 +6,28 @@ import { SendIcon } from "lucide-react";
 
 export default function TransactionPage() {
   return (
-    <div className=" p-10 space-y-8 space-x-60">
+    <div className="p-5 sm:p-10 space-y-8 space-x-0 sm:space-x-60">
       {/* Total Balance Section */}
-      <section className=" flex justify-between items-center bg-gradient-to-r bg-purple-900/50 to-teal-500 text-white p-6 rounded-lg shadow ml-60">
-        <div>
+      <section className="flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r bg-purple-900/50 to-teal-500 text-white p-6 rounded-lg shadow sm:ml-60">
+        <div className="text-center sm:text-left mb-4 sm:mb-0">
           <h2 className="text-lg">Total Balance</h2>
           <p className="text-3xl font-bold">€ 320,845.20</p>
           <span className="text-sm text-blue-600">15.8% ↑</span>
         </div>
-        <div className="space-x-4">
-          <Button className="bg-green-700 flex items-center mb-3 ml-5">
+        <div className="space-x-4 sm:space-x-0 sm:space-y-3 flex flex-row sm:flex-col justify-center sm:items-start">
+          <Button className="bg-green-700 flex items-center mb-3 sm:mb-0">
             <PlusIcon className="w-10 h-4 mr-2" /> Add
           </Button>
           <Button className="bg-green-700 flex items-center">
             <SendIcon className="w-4 h-4 mr-2" /> Send
           </Button>
-          
         </div>
       </section>
 
       {/* Cash Flow and Summary Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {/* Cash Flow Graph */}
-        <Card className="col-span-2 mr-3 p-2">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-2 p-2">
           <CardHeader>
             <CardTitle>Cash Flow</CardTitle>
             <CardDescription>Weekly | Daily | Manage</CardDescription>
@@ -39,7 +38,7 @@ export default function TransactionPage() {
         </Card>
         
         {/* Income and Expense */}
-        <div className="space-y-4">
+        <div className="space-y-4 sm:space-y-6">
           <Card>
             <CardContent>
               <p className="text-sm font-medium">Income</p>
@@ -58,7 +57,7 @@ export default function TransactionPage() {
       </section>
 
       {/* Account Summary Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <Card>
           <CardContent className="p-3">
             <p className="text-sm font-medium">Business Account</p>
@@ -139,7 +138,6 @@ export default function TransactionPage() {
           </div>
         </Card>
       </section>
-      
     </div>
   );
 }
