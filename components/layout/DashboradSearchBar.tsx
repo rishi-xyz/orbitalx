@@ -5,6 +5,7 @@ import { Input } from "../ui/input"
 import { ScrollArea } from "../ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { FC, useState } from "react"
+import { Dialog, DialogTrigger } from "../ui/dialog"
 
 
 const DashboradSearchBar:FC = () => {
@@ -54,18 +55,21 @@ const DashboradSearchBar:FC = () => {
                 <SheetDescription>
                     <ScrollArea className="h-[650px] w-full rounded-lg border mt-3">
                         <div className="flex flex-col m-5 space-y-4 justify-center">
+                            <Dialog>
                             {filteredContacts.map((contact, index) => (
-                                <div key={index} className="flex items-center space-x-3">
-                                    <Avatar className="h-10 w-10">
+                                <DialogTrigger key={index} className="flex items-center justify-start m-1 space-x-3">
+                                    <Avatar className="h-10 w-10 mr-2">
                                         <AvatarImage src={contact.imageUrl} alt={contact.name} />
                                         <AvatarFallback>{contact.icon}</AvatarFallback>
                                     </Avatar>
-                                    <div>
+                                    <div className="justify-start items-start">
                                         <p className="text-sm font-medium text-white">{contact.name}</p>
-                                        <p className="text-xs text-gray-400">{contact.userId}</p>
+                                        <p className="text-xs text-start text-gray-400">{contact.userId}</p>
                                     </div>
-                                </div>
+                                </DialogTrigger>
+                                
                             ))}
+                            </Dialog>
                         </div>
                     </ScrollArea>
                 </SheetDescription>

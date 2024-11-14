@@ -1,4 +1,4 @@
-import {Home, Search, Settings,History} from "lucide-react"
+import {Home, Settings,History,Contact} from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +20,7 @@ export function AppSidebar() {
         <div className="text-xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mr-6 transform transition-transform duration-200 hover:scale-110">
           OrbitalX
         </div>
-        <div className="transform transition-transform duration-200 hover:scale-125 mr-6">
+        <div className="transform transition-transform duration-200 hover:scale-125 mr-6 mt-2">
                <UserButton />
           </div>
       </SidebarHeader>
@@ -102,9 +102,9 @@ const items = [
     icon: History,
   },
   {
-    title: "Search",
+    title: "Contacts",
     url: "#",
-    icon: Search,
+    icon: Contact,
   },
   {
     title: "Settings",

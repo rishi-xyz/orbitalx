@@ -19,7 +19,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import Paybills from "@/src/Paybills";
+import Paybills from "@/src/grouppay";
 import Transfer from "@/src/transfer";
 import ScanConnect from "@/src/ScanConnect";
 import PayAddress from "@/src/PayAddress";
