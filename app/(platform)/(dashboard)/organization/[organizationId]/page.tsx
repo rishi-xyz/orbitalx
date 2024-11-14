@@ -4,6 +4,7 @@ import TokenSelectorModal from "@/src/modals/token-selector";
 import PeopleSection from "@/components/People";
 import BussinessSection from "@/components/Businesses";
 
+
 const DashboardPage = async () => {
   return (
     <>
@@ -12,6 +13,7 @@ const DashboardPage = async () => {
       <PeopleSection />
       <BussinessSection />
       <TokenSelectorModal/>
+      
     </>
   );
 };
