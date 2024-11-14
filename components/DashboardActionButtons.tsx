@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { Landmark, ReceiptText, ArrowRightLeft, Send, ScanQrCode } from "lucide-react"
+import { Landmark, ReceiptText, ArrowRightLeft, Send, ScanQrCode } from "lucide-react";
 
 import {
   Drawer,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
+} from "@/components/ui/drawer";
 import Swap from "@/src/swap";
 import TokenSelectorModal from "@/src/modals/token-selector";
 import {
@@ -18,13 +18,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import Paybills from "@/src/grouppay";
 import Transfer from "@/src/transfer";
 import ScanConnect from "@/src/ScanConnect";
 import PayAddress from "@/src/PayAddress";
-
-
 
 interface ActionButtonProps {
   icon: FC<{ className?: string }>;
@@ -33,7 +31,7 @@ interface ActionButtonProps {
 
 const ActionButton: FC<ActionButtonProps> = memo(({ icon: Icon, label }) => {
   return (
-    <div className="flex flex-col items-center w-full sm:w-24 h-24 sm:h-24 mx-auto max-w-xs bg-gray-800/70  hover:bg-purple-900/50 border border-purple-500/10 backdrop-blur-md rounded-2xl p-6 mr-5 sm:p-4 transition-transform duration-200 hover:scale-125   ">
+    <div className="flex flex-col items-center w-full sm:w-24 h-24 sm:h-24 mx-auto max-w-xs bg-gray-800/70 hover:bg-purple-900/50 border border-purple-500/10 backdrop-blur-md rounded-2xl p-6 sm:p-4 mr-5 sm:mr-4 transition-transform duration-200 hover:scale-125">
       <div className="w-auto items-center justify-center flex flex-col">
         <Icon className="w-6 h-6 sm:w-8 sm:h-8 mb-1 sm:mb-2 text-white" />
         <p className="text-xs sm:text-sm text-center">{label}</p>
@@ -46,22 +44,25 @@ ActionButton.displayName = "ActionButton";
 
 const DashboardActionButtons = () => {
   return (
-    <div className="mx-auto flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-lg mt-4 z-50 sticky top-24">
-      {/**Scan QR */}
+    <div className="mx-auto flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-lg mt-4 z-50">
+      {/** Scan QR */}
       <Drawer>
         <DrawerTrigger>
           <ActionButton icon={ScanQrCode} label="ScanQR" />
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-0 text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">ScanConnect</DrawerTitle>
+            <DrawerTitle className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-0 text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
+              ScanConnect
+            </DrawerTitle>
             <DrawerDescription>
               <ScanConnect />
             </DrawerDescription>
           </DrawerHeader>
         </DrawerContent>
       </Drawer>
-      {/**Pay Address */}
+
+      {/** Pay Address */}
       <Dialog>
         <DialogTrigger>
           <ActionButton icon={Send} label="Pay Address" />
@@ -77,7 +78,8 @@ const DashboardActionButtons = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      {/**Transfer */}
+
+      {/** Transfer */}
       <Dialog>
         <DialogTrigger>
           <ActionButton icon={Landmark} label="Transfer" />
@@ -93,7 +95,8 @@ const DashboardActionButtons = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      {/**Pay bills */}
+
+      {/** Pay bills */}
       <Dialog>
         <DialogTrigger>
           <ActionButton icon={ReceiptText} label="GroupPay" />
@@ -109,14 +112,17 @@ const DashboardActionButtons = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      {/**Swap */}
+
+      {/** Swap */}
       <Drawer>
         <DrawerTrigger>
           <ActionButton icon={ArrowRightLeft} label="Swap" />
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-0 text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text ">Swap</DrawerTitle>
+            <DrawerTitle className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 md:mb-0 text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
+              Swap
+            </DrawerTitle>
             <DrawerDescription>
               <Swap />
               <TokenSelectorModal />
@@ -125,7 +131,7 @@ const DashboardActionButtons = () => {
         </DrawerContent>
       </Drawer>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardActionButtons
+export default DashboardActionButtons;

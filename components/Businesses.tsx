@@ -42,11 +42,11 @@ export default function BussinessSection() {
   );
 }
 const contacts = [
-  { id: "1", name: "Tech Innovations", icon: "TI", imageUrl: "/pppp.jpg" },
-  { id: "2", name: "Green Solutions", icon: "GS", imageUrl: "/p10.jpg" },
-  { id: "3", name: "Creative Designs", icon: "CD", imageUrl: "/p6.jpg" },
-  { id: "4", name: "Future Enterprises", icon: "FE", imageUrl: "/p4.jpg" },
-  { id: "5", name: "Global Ventures", icon: "GV", imageUrl: "/p5.png" },
+  { id: "1", name: "Tech Innovations", icon: "TI", imageUrl: "/alliance.png" },
+  { id: "2", name: "Green Solutions", icon: "GS", imageUrl: "/businessman.png" },
+  { id: "3", name: "Creative Designs", icon: "CD", imageUrl: "/coaching.png" },
+  { id: "4", name: "Future Enterprises", icon: "FE", imageUrl: "/hacker.png" },
+  { id: "5", name: "Global Ventures", icon: "GV", imageUrl: "/target.png" },
   { id: "6", name: "NextGen Technologies", icon: "NG", imageUrl: "/pp.jpg" },
   { id: "7", name: "Innovative Systems", icon: "IS", imageUrl: "/p5.png" },
   { id: "8", name: "Dynamic Solutions", icon: "DS", imageUrl: "/ppp.jpg" },
