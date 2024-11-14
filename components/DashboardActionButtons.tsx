@@ -46,7 +46,7 @@ ActionButton.displayName = "ActionButton";
 
 const DashboardActionButtons = () => {
   return (
-    <div className="mx-auto flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-lg mt-4">
+    <div className="mx-auto flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-lg mt-4 z-50 sticky top-24">
       {/**Scan QR */}
       <Drawer>
         <DrawerTrigger>
