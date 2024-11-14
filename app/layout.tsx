@@ -4,6 +4,7 @@ import "./globals.css";
 import {twMerge} from "tailwind-merge"
 import { siteConfig } from "@/config/site";
 import { ClerkProvider } from "@clerk/nextjs";
+import {dark} from "@clerk/themes"
 
 const inter = Inter({subsets:["latin"]});
 
@@ -29,7 +30,12 @@ export default function RootLayout({
       <body
         className={ twMerge(inter.className,"bg-black text-white antialiased")}
       >
-        <ClerkProvider dynamic
+        <ClerkProvider dynamic appearance={{
+          baseTheme:dark,
+          layout:{
+            unsafe_disableDevelopmentModeWarnings:true
+          }
+        }}
         afterMultiSessionSingleSignOutUrl={"/"}
         afterSignOutUrl={"/"}
         >

@@ -17,7 +17,7 @@ const DashboardNavbar: FC = () => {
                         </div>
                     </div>
                     {/*Organization switcher by clerk */}
-                    <div className="hidden md:flex">
+                    <div className="hidden md:flex bg-[radial-gradient(90%_90%_at_center_center,rgb(140,69,255,.5)_15%,rgb(14,0,36,.5)_78%,transparent)] rounded-lg p-1 border border-background-white text-white focus:outline-none">
                         <OrganizationSwitcher
                             afterCreateOrganizationUrl={"/organization/:id"}
                             afterLeaveOrganizationUrl="/organization/:id"
@@ -29,6 +29,7 @@ const DashboardNavbar: FC = () => {
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
+                                        textDecorationColor:"white",
                                     }
                                 }
                             }}
