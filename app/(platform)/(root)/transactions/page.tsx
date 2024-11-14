@@ -8,7 +8,7 @@ export default function TransactionPage() {
   return (
     <div className=" p-10 space-y-8 space-x-60">
       {/* Total Balance Section */}
-      <section className=" flex justify-between items-center bg-gradient-to-r from-green-700 to-teal-500 text-white p-6 rounded-lg shadow ml-60">
+      <section className=" flex justify-between items-center bg-gradient-to-r bg-purple-900/50 to-teal-500 text-white p-6 rounded-lg shadow ml-60">
         <div>
           <h2 className="text-lg">Total Balance</h2>
           <p className="text-3xl font-bold">€ 320,845.20</p>
