@@ -5,14 +5,15 @@ import { Input } from "../ui/input"
 import { ScrollArea } from "../ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { FC, useState } from "react"
-import { Dialog, DialogTrigger } from "../ui/dialog"
+import { Dialog, DialogTrigger,DialogContent } from "../ui/dialog"
+import ContactsDialog from "../ContactsDialog"
 
 
-const DashboradSearchBar:FC = () => {
+const DashboradSearchBar: FC = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
-    const filteredContacts = contacts.filter(contact => 
-        contact.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    const filteredContacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         contact.userId.includes(searchTerm)
     );
 
@@ -55,21 +56,25 @@ const DashboradSearchBar:FC = () => {
                 <SheetDescription>
                     <ScrollArea className="h-[650px] w-full rounded-lg border mt-3">
                         <div className="flex flex-col m-5 space-y-4 justify-center">
-                            <Dialog>
                             {filteredContacts.map((contact, index) => (
-                                <DialogTrigger key={index} className="flex items-center justify-start m-1 space-x-3">
-                                    <Avatar className="h-10 w-10 mr-2">
-                                        <AvatarImage src={contact.imageUrl} alt={contact.name} />
-                                        <AvatarFallback>{contact.icon}</AvatarFallback>
-                                    </Avatar>
-                                    <div className="justify-start items-start">
-                                        <p className="text-sm font-medium text-white">{contact.name}</p>
-                                        <p className="text-xs text-start text-gray-400">{contact.userId}</p>
-                                    </div>
-                                </DialogTrigger>
-                                
+                                <Dialog key={index}>
+                                    <DialogTrigger >
+                                        <div className="flex items-center justify-start m-1 space-x-3">
+                                            <Avatar className="h-10 w-10 mr-2">
+                                                <AvatarImage src={contact.imageUrl} alt={contact.name} />
+                                                <AvatarFallback>{contact.icon}</AvatarFallback>
+                                            </Avatar>
+                                            <div className="justify-start items-start">
+                                                <p className="text-sm font-medium text-white">{contact.name}</p>
+                                                <p className="text-xs text-start text-gray-400">{contact.userId}</p>
+                                            </div>
+                                        </div>
+                                    </DialogTrigger>
+                                    <DialogContent>
+                                            <ContactsDialog UserName={contact.name} UserId={contact.userId} />
+                                    </DialogContent>
+                                </Dialog>
                             ))}
-                            </Dialog>
                         </div>
                     </ScrollArea>
                 </SheetDescription>
