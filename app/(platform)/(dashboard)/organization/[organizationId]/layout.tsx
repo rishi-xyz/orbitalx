@@ -1,6 +1,6 @@
 import DashboardNavbar from '@/components/layout/DashboardNavbar'
 import WalletModal from '@/src/modals/wallet'
-import { ClerkProvider, useOrganization } from '@clerk/nextjs'
+import { ClerkProvider} from '@clerk/nextjs'
 import { auth } from '@clerk/nextjs/server'
 import React from 'react'
 import {startCase} from "lodash"
