@@ -14,12 +14,38 @@ import {
 } from "@/components/ui/sidebar"
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
 import { DashboardIcon } from "@radix-ui/react-icons"
-
-
-
-
+import { useAuth } from "@clerk/nextjs";
 
 export function AppSidebar() {
+  const {userId} = useAuth();
+  const items = [
+    {
+      title: "Home",
+      url: "/",
+      icon: Home,
+    },
+    {
+      title: "Transactions",
+      url: "/transactions",
+      icon: History,
+    },
+    {
+      title: "Dashboard",
+      url: `/organization/${userId}`,
+      icon: DashboardIcon,
+    },
+    {
+      title: "Contacts",
+      url: "#",
+      icon: Contact,
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: Settings,
+    },
+  ]
+
   return (
     <Sidebar  className="bg-transparent/70 md:bg-transparent ">
       <SidebarHeader className=" flex flex-row m-2 p-4">
@@ -95,31 +121,3 @@ export function AppSidebar() {
     </Sidebar>
   )
 }
-
-const items = [
-  {
-    title: "Home",
-    url: "/",
-    icon: Home,
-  },
-  {
-    title: "Transactions",
-    url: "/transactions",
-    icon: History,
-  },
-  {
-    title: "Dashboard",
-    url: "/",
-    icon: DashboardIcon,
-  },
-  {
-    title: "Contacts",
-    url: "#",
-    icon: Contact,
-  },
-  {
-    title: "Settings",
-    url: "/settings",
-    icon: Settings,
-  },
-]
