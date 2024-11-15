@@ -1,10 +1,10 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+
 
 export default function Settings() {
-  const userPhotoURL = "/p4.jpg";
+  
   return (
     <div className="bg-gradient-to-r from-[#1a1f33] to-[#00060c] text-white min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
