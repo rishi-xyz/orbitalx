@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Settings() {
-  const userPhotoURL = "/p8.jpg";
+  const userPhotoURL = "/p4.jpg";
   return (
     <div className="bg-gradient-to-r from-[#1a1f33] to-[#00060c] text-white min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
@@ -32,11 +32,7 @@ export default function Settings() {
             </div>
             <div className="flex items-center space-x-4 mt-4">
                 {/* User Photo */}
-                <Image
-                  src={userPhotoURL}
-                  alt="User Photo"
-                  className="w-12 h-12 rounded-full object-cover bg-gray-700"
-                />
+                
                 <Button variant="outline">Update</Button>
               </div>
             </div>
