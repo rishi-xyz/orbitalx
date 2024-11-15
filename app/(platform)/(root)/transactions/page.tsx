@@ -6,13 +6,13 @@ import { SendIcon } from "lucide-react";
 
 export default function TransactionPage() {
   return (
-    <div className="p-5 sm:p-10 space-y-8 space-x-0 sm:space-x-60">
+    <div className="p-5 sm:p-10 space-y-8 space-x-0 sm:space-x-60 bg-gradient-to-r from-[#1a1f33] to-[#00060c] ">
       {/* Total Balance Section */}
-      <section className="flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r bg-purple-900/50 to-teal-500 text-white p-6 rounded-lg shadow sm:ml-60">
+      <section className="flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r from-[#205459] to-[#00060c] text-white p-6 rounded-lg shadow sm:ml-60">
         <div className="text-center sm:text-left mb-4 sm:mb-0">
           <h2 className="text-lg">Total Balance</h2>
           <p className="text-3xl font-bold">€ 320,845.20</p>
-          <span className="text-sm text-blue-600">15.8% ↑</span>
+          <span className="text-sm text-green-600">15.8% ↑</span>
         </div>
         <div className="space-x-4 sm:space-x-0 sm:space-y-3 flex flex-row sm:flex-col justify-center sm:items-start">
           <Button className="bg-green-700 flex items-center mb-3 sm:mb-0">
