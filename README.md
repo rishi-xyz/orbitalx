@@ -24,4 +24,5 @@ Our decentralized finance (DeFi) platform is designed to revolutionize how users
 
 **Our Vision**
 
-We aim to democratize access to decentralized finance by making it as simple and accessible as possible. Our platform bridges the gap between complex blockchain technology and everyday users, fostering a world where managing digital assets is as effortless as traditional financial transactions.
+We aim to democratize access to decentralized finance by making it as simple and accessible as possible.
+The future map is to make a mobile app with features of QR-code and bill payment to make transaction and asset handling more accessible.Our platform bridges the gap between complex blockchain technology and everyday users, fostering a world where managing digital assets is as effortless as traditional financial transactions.
