@@ -22,12 +22,12 @@ const DashboradSearchBar: FC = () => {
             <SheetTrigger>
                 <div className="flex flex-col items-center max-w-sm mx-auto">
                     <div className="relative w-72 m-2 gap-2">
-                        <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <div className="absolute inset-y-0 left-0 flex items-center ">
                             <Search className="w-5 h-5 text-gray-400" />
                         </div>
                         <Input
                             type="text"
-                            className="w-full py-2 pl-10 pr-3 bg-[radial-gradient(75%_75%_at_center_center,rgb(140,69,255,.5)_15%,rgb(14,0,36,.5)_78%,transparent)] rounded-lg text-white focus:outline-none"
+                            className="w-full py-2 pl-10 pr-3  rounded-lg bg-gradient-to-r from-[#371e51] to-[#00060c]  p-6   text-white focus:outline-none"
                             placeholder="Transfer by name or Wallet Address"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
