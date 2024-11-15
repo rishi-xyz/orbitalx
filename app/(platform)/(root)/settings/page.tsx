@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Settings() {
   const userPhotoURL = "/p8.jpg";
@@ -31,7 +32,7 @@ export default function Settings() {
             </div>
             <div className="flex items-center space-x-4 mt-4">
                 {/* User Photo */}
-                <img
+                <Image
                   src={userPhotoURL}
                   alt="User Photo"
                   className="w-12 h-12 rounded-full object-cover bg-gray-700"
