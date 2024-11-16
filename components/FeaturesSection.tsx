@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 const FeaturesSection = () => {
     
@@ -110,7 +111,7 @@ const FeaturesSection = () => {
                 <h3 className="text-xl font-semibold mb-4">Scan QR Code</h3>
                 <div className="flex justify-center mb-4">
                     <div className="bg-gray-700 p-4 rounded-lg">
-                        <img src="/Untitled.png" className="h-32 w-32" alt="QR Code" />
+                        <Image src="/Untitled.png" className="h-32 w-32" alt="QR Code" />
                     </div>
                 </div>
                 <p className="text-gray-400 text-center mb-6">

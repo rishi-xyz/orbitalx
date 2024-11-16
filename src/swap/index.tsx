@@ -148,7 +148,7 @@ export default function Swap() {
                         onOpenModal({
                             tokens: tokens?.router.all_tokens.tokens ?? [],
                             title: "Select From Token",
-                            description: "Select token which want to convert",
+                            description: "Select token which you want to convert",
                             onTokenSelect: (token) => setFromToken(token),
                         })
                     }
