@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
@@ -19,18 +19,18 @@ export default function PeopleSection() {
 
   return (
     <div className="mx-auto max-w-7xl w-full mt-11 space-y-8">
-      <h2 className="text-3xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mt-24 text-center mb-7 ">
+      <h2 className="text-3xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-[radial-gradient(100%_100%_at_top_left,#8c45ff,white,#4a208a)] text-transparent bg-clip-text mt-24 text-center mb-7">
         People
       </h2>
       <div className="flex overflow-x-auto space-x-4 justify-center mt-40 gap-x-6">
         {contacts.slice(0, visibleCount).map((contact, index) => (
-          <Dialog key={index} >
+          <Dialog key={index}>
             <DialogTrigger className="flex flex-col items-center">
-              <Avatar className="h-17 w-14 mb-2   transform transition-transform duration-200 hover:scale-125 hover:shadow-lg ">
+              <Avatar className="h-17 w-14 mb-2 transform transition-transform duration-200 hover:scale-125 hover:shadow-[0_0_15px_rgb(140,69,255)]">
                 <AvatarImage src={contact.imageUrl} alt={contact.name} />
                 <AvatarFallback>{contact.icon}</AvatarFallback>
               </Avatar>
-              <p className="text-xs text-center">{contact.name}</p>
+              <p className="text-xs text-gray-300 text-center">{contact.name}</p>
             </DialogTrigger>
             <DialogContent>
               <ContactsDialog UserName={contact.name} UserId={contact.id} />
@@ -41,6 +41,7 @@ export default function PeopleSection() {
     </div>
   );
 }
+
 const contacts = [
   { id: "1", name: "ADAM", icon: "JD", imageUrl: "/ppp.jpg" },
   { id: "2", name: "KETH", icon: "JD", imageUrl: "/p4.jpg" },

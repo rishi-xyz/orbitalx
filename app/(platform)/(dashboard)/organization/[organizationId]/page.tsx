@@ -7,14 +7,13 @@ import BussinessSection from "@/components/Businesses";
 
 const DashboardPage = async () => {
   return (
-    <>
+    <section >
       <DashboardBanner/>
       <DashboardActionButtons/>
       <PeopleSection />
       <BussinessSection />
       <TokenSelectorModal/>
-      
-    </>
+    </section>
   );
 };
 
