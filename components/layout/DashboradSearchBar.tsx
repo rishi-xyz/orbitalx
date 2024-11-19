@@ -20,12 +20,12 @@ const DashboardSearchBar: FC = () => {
   return (
     <div className="flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto">
       {/* Main Content */}
-      <main className="flex-1 p-4 bg-gradient-to-r from-[#371e51] to-[#00060c] rounded-lg shadow-lg">
+      <main className="flex-1 p-2">
         <Sheet>
           <SheetTrigger>
-            <div className="relative w-full max-w-lg mx-auto mb-4">
+            <div className="relative w-full max-w-lg mx-auto mb-4 mt-1">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <Search className="w-5 h-5 text-gray-400" />
+                <Search className="w-5 h-5  text-gray-400" />
               </div>
               <Input
                 type="text"

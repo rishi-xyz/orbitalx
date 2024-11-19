@@ -1,11 +1,16 @@
-"use client"
+"use client";
 import { FC, memo } from "react";
-import { Landmark, ReceiptText, ArrowRightLeft, Send, ScanQrCode } from "lucide-react";
+import {
+  Landmark,
+  ReceiptText,
+  ArrowRightLeft,
+  Send,
+  ScanQrCode,
+} from "lucide-react";
 
 import {
   Drawer,
   DrawerContent,
-  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -15,7 +20,6 @@ import TokenSelectorModal from "@/src/modals/token-selector";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -30,37 +34,27 @@ interface ActionButtonProps {
   label: string;
 }
 
-interface ActionButtonProps {
-  icon: FC<{ className?: string }>;
-  label: string;
-}
-
-const ActionButton: FC<ActionButtonProps> = memo(({ icon: Icon, label }) => {
-  return (
-    <div className="flex flex-col items-center w-full sm:w-24 h-24 sm:h-24 mx-auto max-w-xs bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 hover:from-indigo-900 hover:via-purple-800 hover:to-purple-500 border border-purple-500/10 backdrop-blur-md rounded-2xl p-6 sm:p-4 transition-transform duration-200 hover:scale-125">
-      <div className="w-auto items-center justify-center flex flex-col">
-        <Icon className="w-6 h-6 sm:w-8 sm:h-8 mb-1 sm:mb-2 text-white" />
-        <p className="text-xs sm:text-sm text-gray-300 text-center">{label}</p>
-      </div>
-    </div>
-  );
-});
-
+const ActionButton: FC<ActionButtonProps> = memo(({ icon: Icon, label }) => (
+  <div className="flex flex-col items-center w-24 h-24 mx-auto bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 hover:from-indigo-900 hover:via-purple-800 hover:to-purple-500 border border-purple-500/10 backdrop-blur-md rounded-2xl p-4 transition-transform duration-200 hover:scale-110">
+    <Icon className="w-10 h-10 mb-2 text-white" />
+    <p className="text-sm text-gray-300 text-center">{label}</p>
+  </div>
+));
 
 ActionButton.displayName = "ActionButton";
 
 const DashboardActionButtons = () => {
   return (
-    <div className="mx-auto flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-lg mt-4 z-50">
+    <div className="mx-auto grid grid-cols-4 gap-4 w-full max-w-lg mt-4 z-50">
       {/* Scan QR */}
       <Drawer>
         <DrawerTrigger>
-          <ActionButton icon={ScanQrCode} label="ScanQR" />
+          <ActionButton icon={ScanQrCode} label="Scan QR" />
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
-              ScanConnect
+              Scan Connect
             </DrawerTitle>
             <ScanConnect />
           </DrawerHeader>
@@ -75,7 +69,7 @@ const DashboardActionButtons = () => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
-              PayAddress
+              Pay Address
             </DialogTitle>
             <PayAddress />
           </DialogHeader>
@@ -97,7 +91,7 @@ const DashboardActionButtons = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Pay bills */}
+      {/* GroupPay */}
       <Dialog>
         <DialogTrigger>
           <ActionButton icon={ReceiptText} label="GroupPay" />

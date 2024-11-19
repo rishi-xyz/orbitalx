@@ -7,7 +7,7 @@ import BussinessSection from "@/components/Businesses";
 
 const DashboardPage = async () => {
   return (
-    <section >
+    <section className="overflow-hidden max-w-full p-1">
       <DashboardBanner/>
       <DashboardActionButtons/>
       <PeopleSection />

@@ -1,5 +1,5 @@
 "use client"
-import {Home, Settings,History,Contact} from "lucide-react"
+import { Home, Settings, History, Contact } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -17,7 +17,7 @@ import { DashboardIcon } from "@radix-ui/react-icons"
 import { useAuth } from "@clerk/nextjs";
 
 export function AppSidebar() {
-  const {userId} = useAuth();
+  const { userId } = useAuth();
   const items = [
     {
       title: "Home",
@@ -47,14 +47,14 @@ export function AppSidebar() {
   ]
 
   return (
-    <Sidebar  className="bg-transparent/70 md:bg-transparent ">
+    <Sidebar className="bg-transparent/70 md:bg-transparent ">
       <SidebarHeader className=" flex flex-row m-2 p-4">
         <div className="text-xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mr-6 transform transition-transform duration-200 hover:scale-110">
           OrbitalX
         </div>
         <div className="transform transition-transform duration-200 hover:scale-125 mr-6 mt-2">
-               <UserButton />
-          </div>
+          <UserButton />
+        </div>
       </SidebarHeader>
       <SidebarContent className="flex flex-col justify-between h-full p-2">
         <div>
@@ -97,25 +97,28 @@ export function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         </div>
-        <SidebarFooter className="mb-4 p-2 flex md:hidden">
+        <SidebarFooter className="mb-4 p-2 flex">
           <div className="text-sm md:text-base font-bold leading-tight lg:mb-auto bg-purple-400 bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mb-4">
             Switch
           </div>
-          <OrganizationSwitcher
-            afterCreateOrganizationUrl={"/organization/:id"}
-            afterLeaveOrganizationUrl="/organization/:id"
-            afterSelectOrganizationUrl={"/organization/:id"}
-            afterSelectPersonalUrl={"/organization/:id"}
-            appearance={{
-              elements: {
-                rootBox: {
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+          <div className="hidden md:flex bg-gradient-to-r from-[#371e51] to-[#00060c] rounded-lg p-3 border border-background-white text-white focus:outline-none">
+            <OrganizationSwitcher
+              afterCreateOrganizationUrl={"/organization/:id"}
+              afterLeaveOrganizationUrl="/organization/:id"
+              afterSelectOrganizationUrl={"/organization/:id"}
+              afterSelectPersonalUrl={"/organization/:id"}
+              appearance={{
+                elements: {
+                  rootBox: {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textDecorationColor: "white",
+                  }
                 }
-              }
-            }}
-          />
+              }}
+            />
+          </div>
         </SidebarFooter>
       </SidebarContent>
     </Sidebar>
