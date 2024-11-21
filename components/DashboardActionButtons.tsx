@@ -8,13 +8,6 @@ import {
   ScanQrCode,
 } from "lucide-react";
 
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import Swap from "@/src/swap";
 import TokenSelectorModal from "@/src/modals/token-selector";
 import {
@@ -47,19 +40,19 @@ const DashboardActionButtons = () => {
   return (
     <div className="mx-auto grid grid-cols-4 gap-4 w-full max-w-lg mt-4 z-50">
       {/* Scan QR */}
-      <Drawer>
-        <DrawerTrigger>
+      <Dialog>
+        <DialogTrigger>
           <ActionButton icon={ScanQrCode} label="Scan QR" />
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
               Scan Connect
-            </DrawerTitle>
+            </DialogTitle>
             <ScanConnect />
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
 
       {/* Pay Address */}
       <Dialog>
@@ -107,20 +100,20 @@ const DashboardActionButtons = () => {
       </Dialog>
 
       {/* Swap */}
-      <Drawer>
-        <DrawerTrigger>
+      <Dialog>
+        <DialogTrigger>
           <ActionButton icon={ArrowRightLeft} label="Swap" />
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
               Swap
-            </DrawerTitle>
+            </DialogTitle>
             <Swap />
             <TokenSelectorModal />
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
