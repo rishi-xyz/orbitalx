@@ -45,7 +45,7 @@ export default function PeopleSection() {
               <p className="text-sm text-gray-300 text-center">{contact.name}</p>
             </DialogTrigger>
             <DialogContent>
-              <ContactsDialog UserName={contact.name} UserId={contact.id} />
+              <ContactsDialog UserName={contact.name} />
             </DialogContent>
           </Dialog>
         ))}

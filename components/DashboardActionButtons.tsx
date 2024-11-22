@@ -38,7 +38,7 @@ ActionButton.displayName = "ActionButton";
 
 const DashboardActionButtons = () => {
   return (
-    <div className="mx-auto grid grid-cols-4 gap-4 w-full max-w-lg mt-4 z-50">
+    <div className="mx-auto grid grid-cols-5 gap-10 w-full max-w-lg mt-8">
       {/* Scan QR */}
       <Dialog>
         <DialogTrigger>

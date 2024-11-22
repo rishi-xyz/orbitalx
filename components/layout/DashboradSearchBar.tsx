@@ -79,7 +79,6 @@ const DashboardSearchBar: FC = () => {
                       <DialogContent>
                         <ContactsDialog
                           UserName={contact.name}
-                          UserId={contact.userId}
                         />
                       </DialogContent>
                     </Dialog>

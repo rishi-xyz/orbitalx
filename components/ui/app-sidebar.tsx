@@ -47,7 +47,7 @@ export function AppSidebar() {
   ]
 
   return (
-    <Sidebar className="bg-transparent/70 md:bg-transparent ">
+    <Sidebar className="bg-transparent/70 md:bg-transparent w-[250px] ">
       <SidebarHeader className=" flex flex-row m-2 p-4">
         <div className="text-xl lg:text-4xl font-bold leading-tight lg:mb-auto bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text mr-6 transform transition-transform duration-200 hover:scale-110">
           OrbitalX

@@ -27,7 +27,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <SidebarProvider>
           <AppSidebar />
           <main className="flex justify-center items-center h-full">
-            <div className="border border-purple-500/60 rounded-xl mt-3 p-4 md:p-1 md:ml-14 lg:ml-96 max-w-lg w-full mx-auto my-auto">
+            <div className="border border-purple-500/60 rounded-xl mt-3 p-4 md:p-3 md:ml-14 lg:ml-56 w-[750px] bg-black/70 ">
               {children}
             </div>
           </main>
