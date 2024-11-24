@@ -1,4 +1,4 @@
 export const siteConfig = {
     name: "OrbitalX",
-    description: "Different Currency Same Process",
+    description: "GPay for the Decentralized World - Pay Smartly, Pay Decentralized!",
 };

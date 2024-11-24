@@ -79,8 +79,8 @@ const HeroSection = () => {
         <h1 className="text-7xl md:text-[168px] md:leading-none font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text text-center">
           OrbitalX
         </h1>
-        <p className="text-lg text-white/70 mt-5 text-center md:text-xl max-w-xl mx-auto">
-          Easily transfer and Swap Crypto
+        <p className="text-lg tracking-tight text-white/70 mt-5 text-center md:text-xl max-w-xl mx-auto">
+          GPay for the Decentralized World <br className="m-1"/> Pay Smartly, Pay Decentralized!
         </p>
         <div className="flex justify-center mt-5">
           <HomeButton
@@ -92,6 +92,7 @@ const HeroSection = () => {
           </HomeButton>
         </div>
       </div>
+      <div className="absolute h-[375px] w-full rounded-[100%] bg-black left-1/2 -translate-x-1/2 border border-[#B48CDE] bg-[radial-gradient(closest-side,#000_82%,#9560EB)] top-[calc(101%-96px)]"></div>
     </section>
   );
 };
