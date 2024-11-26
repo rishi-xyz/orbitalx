@@ -57,7 +57,7 @@ const DashboardActionButtons = () => {
       {/* Pay Address */}
       <Dialog>
         <DialogTrigger>
-          <ActionButton icon={Send} label="Pay Address" />
+          <ActionButton icon={Send} label="Send" />
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -107,7 +107,7 @@ const DashboardActionButtons = () => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-center bg-white bg-[radial-gradient(100%_100%_at_top_left,#4a208a,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">
-              Swap
+              Swap and Pay
             </DialogTitle>
             <Swap />
             <TokenSelectorModal />
