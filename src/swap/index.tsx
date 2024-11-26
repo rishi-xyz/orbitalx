@@ -31,7 +31,14 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, WalletCards, Wallet } from "lucide-react";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 export default function Swap() {
     const { chain } = useWalletStore();
@@ -138,6 +145,11 @@ export default function Swap() {
         }
     }
 
+    const [showWalletInfo, setShowWalletInfo] = useState(false);
+
+    const handleWalletClick = () => {
+        setShowWalletInfo(!showWalletInfo);
+    };
 
     return (
         <div className="flex flex-col items-center mt-6 gap-8 w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8 border border-gray-700 rounded-lg p-6 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl">
@@ -187,27 +199,54 @@ export default function Swap() {
             {/* Conversion Preview */}
             {fromToken && toToken && fromTokenAmount && (
                 <div className="flex flex-row items-center justify-center gap-4 bg-gray-800 rounded-lg p-4 w-full">
-                    <div className="flex flex-row items-center gap-3">
+                    <div className="flex flex-row justify-start gap-2">
                         <Token token={fromToken} />
-                        <p className="text-white">{fromTokenAmount || "0.00"}</p>
+                        <p className="text-white ml-4">{fromTokenAmount || "0.00"}</p>
                     </div>
 
                     <ArrowRight className="text-white" size={24} />
 
                     <div className="flex flex-row items-center gap-3">
                         <Token token={toToken} />
-                        <p className="text-white">{macroAmountOut || "0.00"}</p>
+                        <p className="text-white ml-3">{macroAmountOut ? parseFloat(macroAmountOut).toFixed(5) : "0.00"}</p>
                     </div>
                 </div>
             )}
 
+            {/* Send to user */}
+            {showWalletInfo && (
+                <section>
+                    <span className="m-2 text-white/70">
+                        Send To
+                    </span>
+                    <div className="flex flex-row items-center justify-center gap-4 rounded-2xl bg-gray-900 p-4 w-full">
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger>
+                                    <Button className="rounded-3xl ml-2 ">
+                                        <WalletCards size={30} />
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="text-white text-sm">Select from your saved wallets</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                        <Input
+                            placeholder="Enter the wallet Address"
+                            className="text-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 w-full"
+                        />
+                    </div>
+                </section>
+            )}
+
             {/* Action Button */}
-            <div className="w-full">
+            <div className="w-full flex">
                 {chain ? (
                     <PromiseButton
                         disabled={!fromToken || !toToken || microFromValue === "0" || !route || isPending}
                         onClick={handleSwap}
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                        className="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-2xl"
                     >
                         Swap
                     </PromiseButton>
@@ -219,71 +258,86 @@ export default function Swap() {
                         Connect Chain
                     </Button>
                 )}
+                <Button onClick={handleWalletClick} className="rounded-2xl ml-2  ">
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button>
+                                    <Wallet size={30} />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p className="text-white text-sm">Send to Wallet Address</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </Button>
             </div>
+
             {/**Advance options*/}
             {fromToken && toToken && fromTokenAmount && (
-                <div>
-                    <div className="h-[1px] bg-gray-700 w-full  gap-4" />
-
-                    <Dialog>
-                        <DialogTrigger asChild>
-                            <Button variant="outline">Advance Options</Button>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                                <DialogTitle>Advance Settings</DialogTitle>
-                                <DialogDescription>
-                                    Make some advance chnages according to your need.
-                                </DialogDescription>
-                            </DialogHeader>
-                            {/**Denom selector and balance */}
-                            {(fromToken && chain) && (
-                                <div className="flex flex-row items-start gap-2 justify-start">
-                                    <BalanceValue
-                                        tokenId={fromToken}
-                                        selectedDenom={selectedFromDenom}
-                                    />
-                                    <DenomSelector
-                                        selectedDenom={selectedFromDenom}
-                                        chainUId={chain?.chain_uid ?? ""}
-                                        tokenId={fromToken}
-                                        setSelectedDenom={(d) => setSelectedFromDenom(d ?? { voucher: {} })}
-                                    />
-                                </div>
-                            )}
-                            {/*Select Routes */}
-                            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center w-full">
-                                <p className="text-gray-400 whitespace-nowrap">Select Route</p>
-                                {routesLoading ? "Loading Routes" : routes?.paths?.length === 0 ? "No Routes Found" : (
-                                    <Select value={route.join("/")} onValueChange={(r) => setRoute(r.split('/'))}>
-                                        <SelectTrigger className="w-full sm:w-[180px] bg-gray-800 border-gray-700 text-white">
-                                            {route.length > 0 ? (
-                                                <div className="flex flex-row items-center gap-x-2">
-                                                    {route.join(" → ")}
-                                                </div>
-                                            ) : "Select Route"
-                                            }
-                                        </SelectTrigger>
-                                        <SelectContent className="bg-gray-800 border-gray-700 text-white">
-                                            {routes?.paths?.map((path) => (
-                                                <SelectItem key={path.route.join("/")} value={path.route.join("/")} className="hover:bg-gray-700">
-                                                    <div className="flex flex-row items-center gap-x-2">
-                                                        {path.route.join(" → ")}
-                                                    </div>
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
+                <section>
+                    <div>
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button variant="outline">Advance Options</Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[425px]">
+                                <DialogHeader>
+                                    <DialogTitle>Advance Settings</DialogTitle>
+                                    <DialogDescription>
+                                        Make some advance chnages according to your need.
+                                    </DialogDescription>
+                                </DialogHeader>
+                                {/**Denom selector and balance */}
+                                {(fromToken && chain) && (
+                                    <div className="flex flex-row items-start gap-2 justify-start">
+                                        <BalanceValue
+                                            tokenId={fromToken}
+                                            selectedDenom={selectedFromDenom}
+                                        />
+                                        <DenomSelector
+                                            selectedDenom={selectedFromDenom}
+                                            chainUId={chain?.chain_uid ?? ""}
+                                            tokenId={fromToken}
+                                            setSelectedDenom={(d) => setSelectedFromDenom(d ?? { voucher: {} })}
+                                        />
+                                    </div>
                                 )}
-                            </div>
-                            {/* Slippage
+                                {/*Select Routes */}
+                                <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center w-full">
+                                    <p className="text-gray-400 whitespace-nowrap">Select Route</p>
+                                    {routesLoading ? "Loading Routes" : routes?.paths?.length === 0 ? "No Routes Found" : (
+                                        <Select value={route.join("/")} onValueChange={(r) => setRoute(r.split('/'))}>
+                                            <SelectTrigger className="w-full sm:w-[180px] bg-gray-800 border-gray-700 text-white">
+                                                {route.length > 0 ? (
+                                                    <div className="flex flex-row items-center gap-x-2">
+                                                        {route.join(" → ")}
+                                                    </div>
+                                                ) : "Select Route"
+                                                }
+                                            </SelectTrigger>
+                                            <SelectContent className="bg-gray-800 border-gray-700 text-white">
+                                                {routes?.paths?.map((path) => (
+                                                    <SelectItem key={path.route.join("/")} value={path.route.join("/")} className="hover:bg-gray-700">
+                                                        <div className="flex flex-row items-center gap-x-2">
+                                                            {path.route.join(" → ")}
+                                                        </div>
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    )}
+                                </div>
+                                {/* Slippage
                             <div>Slippage</div>
                             <DialogFooter>
                                 <Button type="submit">Save changes</Button>
                             </DialogFooter> */}
-                        </DialogContent>
-                    </Dialog>
-                </div>
+                            </DialogContent>
+                        </Dialog>
+                    </div>
+                </section>
             )}
         </div>
     );
