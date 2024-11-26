@@ -111,8 +111,28 @@ export default function Swap() {
 
     const { mutateAsync: executeSwap, isPending } = useExecuteSwap();
 
+    const [walletAddress, setWalletAddress] = useState<string>("");
+
     const handleSwap = async () => {
         try {
+            console.log("Attempting to execute swap with the following parameters:", {
+                amountIn: microFromValue,
+                assetIn: {
+                    token: fromToken!,
+                    token_type: selectedFromDenom!,
+                },
+                assetOut: toToken || "",
+                crossChainAddresses: walletAddress ? [{ 
+                    user: { 
+                        chain_uid: chain?.chain_uid ?? "", 
+                        address: walletAddress 
+                    }, 
+                }] : [],
+                minAmountOut: "1",
+                swaps: route || [],
+                timeout: 600,
+            });
+
             const tx = await executeSwap({
                 amountIn: microFromValue,
                 assetIn: {
@@ -120,13 +140,17 @@ export default function Swap() {
                     token_type: selectedFromDenom!,
                 },
                 assetOut: toToken || "",
-                // TODO: Implement UI to generate cross chain addresses and update this
-                crossChainAddresses: [],
-                // TODO: Implement UI for splippage and calculate this using the slippage percentage
+                crossChainAddresses: walletAddress ? [{ 
+                    user: { 
+                        chain_uid: chain?.chain_uid ?? "", 
+                        address: walletAddress 
+                    }, 
+                }] : [],
                 minAmountOut: "1",
                 swaps: route || [],
                 timeout: 600,
             });
+
             // Invalidate the simulate swap query
             await gqlClient.refetchQueries({
                 'include': [CodegenGeneratedRouterSimulateSwapDocument]
@@ -135,12 +159,12 @@ export default function Swap() {
             // Invalidate the routes query
             await reactQueryClient.invalidateQueries({
                 queryKey: ["rest", "routes"]
-            })
+            });
             console.log("Swap successful:", tx.transactionHash);
 
         } catch (error) {
-            // @ts-expect-error Error is not typed
-            toast.error(`Swap failed: ${error.message}`);
+            console.error("Error details:", error); // Log the error details
+            toast.error(`Swap failed: ${(error as Error).message}`);
             console.error("Swap failed:", error);
         }
     }
@@ -233,6 +257,8 @@ export default function Swap() {
                             </Tooltip>
                         </TooltipProvider>
                         <Input
+                            value={walletAddress}
+                            onChange={(e) => setWalletAddress(e.target.value)}
                             placeholder="Enter the wallet Address"
                             className="text-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 w-full"
                         />
