@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="py-4 border-b border-white/15 md:border-none sticky top-0 z-30">
+    <header className="mt-4 border-b border-white/15 md:border-none sticky top-0 z-30 backdrop-blur-md">
       <div className="container mx-auto">
         <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto">
           <div className="flex items-center">
