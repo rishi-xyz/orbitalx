@@ -39,6 +39,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 
+import { useToast } from "@/hooks/use-toast";
 
 export default function Swap() {
     const { chain } = useWalletStore();
@@ -114,6 +115,7 @@ export default function Swap() {
     const [walletAddress, setWalletAddress] = useState<string>("");
 
     const handleSwap = async () => {
+        const { toast } = useToast()
         try {
             console.log("Attempting to execute swap with the following parameters:", {
                 amountIn: microFromValue,
@@ -122,11 +124,11 @@ export default function Swap() {
                     token_type: selectedFromDenom!,
                 },
                 assetOut: toToken || "",
-                crossChainAddresses: walletAddress ? [{ 
-                    user: { 
-                        chain_uid: chain?.chain_uid ?? "", 
-                        address: walletAddress 
-                    }, 
+                crossChainAddresses: walletAddress ? [{
+                    user: {
+                        chain_uid: chain?.chain_uid ?? "",
+                        address: walletAddress
+                    },
                 }] : [],
                 minAmountOut: "1",
                 swaps: route || [],
@@ -140,11 +142,11 @@ export default function Swap() {
                     token_type: selectedFromDenom!,
                 },
                 assetOut: toToken || "",
-                crossChainAddresses: walletAddress ? [{ 
-                    user: { 
-                        chain_uid: chain?.chain_uid ?? "", 
-                        address: walletAddress 
-                    }, 
+                crossChainAddresses: walletAddress ? [{
+                    user: {
+                        chain_uid: chain?.chain_uid ?? "",
+                        address: walletAddress
+                    },
                 }] : [],
                 minAmountOut: "1",
                 swaps: route || [],
@@ -161,11 +163,27 @@ export default function Swap() {
                 queryKey: ["rest", "routes"]
             });
             console.log("Swap successful:", tx.transactionHash);
+            <Button
+                onClick={() => {
+                    toast({
+                        title: "Swap Successful",
+                    })
+                }}
+            >
+                Show Toast
+            </Button>
 
         } catch (error) {
             console.error("Error details:", error); // Log the error details
-            toast.error(`Swap failed: ${(error as Error).message}`);
-            console.error("Swap failed:", error);
+            <Button
+                onClick={() => {
+                    toast({
+                        title: "Swap Unsuccessful",
+                    })
+                }}
+            >
+                Show Toast
+            </Button>
         }
     }
 
