@@ -20,7 +20,6 @@ import { ITokenType } from "@euclidprotocol/graphql-codegen";
 import { useWalletStore } from "@/src/zustand/wallet";
 import { useWalletModalStore } from "@/src/modals/wallet/state";
 import { useExecuteSwap } from "@/src/hooks/rest/useExecuteSwap";
-import { toast } from "sonner";
 import { gqlClient } from "@/lib/gql/client";
 import reactQueryClient from "@/lib/react-query/client";
 import {
@@ -38,10 +37,10 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-
 import { useToast } from "@/hooks/use-toast";
 
 export default function Swap() {
+    const { toast } = useToast();
     const { chain } = useWalletStore();
     const { onModalStateChange } = useWalletModalStore();
     const [fromToken, setFromToken] = useState<string>("");
@@ -115,7 +114,6 @@ export default function Swap() {
     const [walletAddress, setWalletAddress] = useState<string>("");
 
     const handleSwap = async () => {
-        const { toast } = useToast()
         try {
             console.log("Attempting to execute swap with the following parameters:", {
                 amountIn: microFromValue,
@@ -163,27 +161,15 @@ export default function Swap() {
                 queryKey: ["rest", "routes"]
             });
             console.log("Swap successful:", tx.transactionHash);
-            <Button
-                onClick={() => {
-                    toast({
-                        title: "Swap Successful",
-                    })
-                }}
-            >
-                Show Toast
-            </Button>
+            toast({
+                title: "Swap Successful",
+            });
 
         } catch (error) {
             console.error("Error details:", error); // Log the error details
-            <Button
-                onClick={() => {
-                    toast({
-                        title: "Swap Unsuccessful",
-                    })
-                }}
-            >
-                Show Toast
-            </Button>
+            toast({
+                title: "Swap Unsuccessful",
+            });
         }
     }
 
