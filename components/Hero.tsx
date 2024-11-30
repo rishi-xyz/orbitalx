@@ -5,8 +5,20 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
-  const { userId } = useAuth();
+
+  const { isSignedIn, userId } = useAuth();
   const router = useRouter();
+
+  const handleTryNowClick = () => {
+    if (!isSignedIn) {
+      // Redirect to Clerk sign-in page with a callback URL
+      router.push(`/sign-in?redirect_url=/organization/${userId}`);
+    } else {
+      // Navigate to the organization page if signed in
+      router.push(`/organization/${userId}`);
+    }
+  };
+  
   return (
     <section
       className="h-[492px] md:h-[800px] flex items-center overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
@@ -82,14 +94,8 @@ const HeroSection = () => {
         <p className="text-lg tracking-tight text-white/70 mt-5 text-center md:text-xl max-w-xl mx-auto">
           GPay for the Decentralized World <br className="m-1"/> Pay Smartly, Pay Decentralized!
         </p>
-        <div className="flex justify-center mt-5">
-          <HomeButton
-            onClick={() => {
-              router.push(`/sign-in?redirect_url=/organization/${userId}`);
-            }}
-          >
-            Start Now
-          </HomeButton>
+        <div className="flex justify-center mt-10">
+        <HomeButton onClick={handleTryNowClick} >Star Now</HomeButton>
         </div>
       </div>
       <div className="absolute h-[375px] w-full rounded-[100%] bg-black left-1/2 -translate-x-1/2 border border-[#B48CDE] bg-[radial-gradient(closest-side,#000_82%,#9560EB)] top-[calc(101%-96px)]"></div>
