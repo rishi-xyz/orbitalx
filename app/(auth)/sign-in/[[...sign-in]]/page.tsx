@@ -53,6 +53,7 @@ export default function Page() {
         <ClerkLoading>
           <Loader2 className="animate-spin text-muted-foreground" />
         </ClerkLoading>
+        
       </div>
     </motion.div>
   );

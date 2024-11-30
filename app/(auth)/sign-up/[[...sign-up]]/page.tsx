@@ -1,5 +1,5 @@
 "use client";
-import { SignUp } from '@clerk/nextjs';
+import { ClerkLoaded, SignUp } from '@clerk/nextjs';
 import startsBg from "@/assets/stars.png";
 import { motion } from 'framer-motion';
 
@@ -46,7 +46,9 @@ export default function Page() {
 
       {/* Gradient Background Container for Sign-Up */}
       <div className="relative z-10 bg-[radial-gradient(circle_at_center,#4a208a,rgb(74,32,138,.5),#0E0024)] p-8 rounded-lg shadow-lg text-white text-center space-y-1 pt-6 pb-6 max-w-md w-full">
+      <ClerkLoaded>
         <SignUp />
+      </ClerkLoaded>
       </div>
     </motion.div>
   );

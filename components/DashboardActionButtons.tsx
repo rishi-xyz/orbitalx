@@ -28,7 +28,7 @@ interface ActionButtonProps {
 }
 
 const ActionButton: FC<ActionButtonProps> = memo(({ icon: Icon, label }) => (
-  <div className="flex flex-col items-center w-24 h-24 mx-auto bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 hover:from-indigo-900 hover:via-purple-800 hover:to-purple-500 border border-purple-500/10 backdrop-blur-md rounded-2xl p-4 transition-transform duration-200 hover:scale-110">
+  <div className="flex flex-col items-center w-24 h-24 mx-auto bg-gradient-to-br from-purple-950 to-slate-800  hover:to-purple-600 border border-purple-500/10 backdrop-blur-md rounded-2xl p-4 transition-transform duration-200 hover:scale-110 ">
     <Icon className="w-10 h-10 mb-2 text-white" />
     <p className="text-sm text-gray-300 text-center">{label}</p>
   </div>

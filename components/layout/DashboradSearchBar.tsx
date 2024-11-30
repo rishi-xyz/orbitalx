@@ -29,7 +29,7 @@ const DashboardSearchBar: FC = () => {
               </div>
               <Input
                 type="text"
-                className="w-full py-3 pl-10 pr-3 rounded-lg bg-gradient-to-r from-purple-800 to-black text-white shadow-xl focus:outline-none"
+                className="w-full py-3 pl-10 pr-3 rounded-lg  text-white shadow-xl focus:outline-none"
                 placeholder="Transfer by name or Wallet Address"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
