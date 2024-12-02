@@ -95,7 +95,7 @@ const HeroSection = () => {
           GPay for the Decentralized World <br className="m-1"/> Pay Smartly, Pay Decentralized!
         </p>
         <div className="flex justify-center mt-10">
-        <HomeButton onClick={handleTryNowClick} >Star Now</HomeButton>
+        <HomeButton onClick={handleTryNowClick} >Start Now</HomeButton>
         </div>
       </div>
       <div className="absolute h-[375px] w-full rounded-[100%] bg-black left-1/2 -translate-x-1/2 border border-[#B48CDE] bg-[radial-gradient(closest-side,#000_82%,#9560EB)] top-[calc(101%-96px)]"></div>
