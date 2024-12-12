@@ -131,7 +131,7 @@ export default function Swap() {
   const handleSwap = async () => {
     try {
       console.log("Attempting to execute swap with the following parameters:", {
-        amountIn: simulateSwapResult?.router.simulate_swap.amount_out|| null,
+        amountIn: simulateSwapResult?.router.simulate_swap.amount_out || null,
         assetIn: {
           token: fromToken!,
           token_type: selectedFromDenom!,
@@ -153,7 +153,7 @@ export default function Swap() {
       });
 
       const tx = await executeSwap({
-        amountIn: simulateSwapResult?.router.simulate_swap.amount_out||"0",
+        amountIn: simulateSwapResult?.router.simulate_swap.amount_out || "0",
         assetIn: {
           token: fromToken!,
           token_type: selectedFromDenom!,
@@ -198,24 +198,7 @@ export default function Swap() {
   return (
     <div className="flex flex-col items-center mt-6 gap-8 w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8 border border-gray-700 rounded-lg p-6 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl">
       {/* Token Selection */}
-      <div className="flex justify-between items-center gap-4 w-full">
-        <Button
-          onClick={() =>
-            onOpenModal({
-              tokens: tokens?.router.all_tokens.tokens ?? [],
-              title: "Tranfer With",
-              description: "Select token with which you want to Transfer ",
-              onTokenSelect: (token) => setFromToken(token),
-            })
-          }
-          disabled={loading}
-          className="bg-gray-700 text-white hover:bg-gray-600 w-full"
-        >
-          {fromToken ? <Token token={fromToken} /> : "From Token"}
-        </Button>
-
-        <ArrowRight className="text-white" size={45} />
-
+      <div className="flex flex-col justify-between items-center gap-4 w-full">
         <Button
           onClick={() =>
             onOpenModal({
@@ -230,15 +213,31 @@ export default function Swap() {
         >
           {toToken ? <Token token={toToken} /> : "To Token"}
         </Button>
-      </div>
+        {/* Amount Input */}
+        <Input
+          value={TokenAmount}
+          onChange={(e) => setTokenAmount(e.target.value)}
+          placeholder="Enter the amount"
+          className="text-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 w-full"
+        />
 
-      {/* Amount Input */}
-      <Input
-        value={TokenAmount}
-        onChange={(e) => setTokenAmount(e.target.value)}
-        placeholder="Enter the amount"
-        className="text-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 w-full"
-      />
+        <span className="m-2 text-white/70">Transfer With</span>
+
+        <Button
+          onClick={() =>
+            onOpenModal({
+              tokens: tokens?.router.all_tokens.tokens ?? [],
+              title: "Tranfer With",
+              description: "Select token with which you want to Transfer ",
+              onTokenSelect: (token) => setFromToken(token),
+            })
+          }
+          disabled={loading}
+          className="bg-gray-700 text-white hover:bg-gray-600 w-full"
+        >
+          {fromToken ? <Token token={fromToken} /> : "From Token"}
+        </Button>
+      </div>
 
       {/* Conversion Preview */}
       {fromToken && toToken && TokenAmount && (
@@ -261,7 +260,7 @@ export default function Swap() {
 
       {/* Send to user */}
       <section>
-        <span className="m-2 text-white/70">Tranfer To</span>
+        <span className="m-2 text-white/70">Transfer To</span>
         <div className="flex flex-row items-center justify-center gap-4 rounded-2xl bg-gray-900 p-4 w-full">
           <TooltipProvider>
             <Tooltip>
