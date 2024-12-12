@@ -52,7 +52,7 @@ export default function Swap() {
   const { chain } = useWalletStore();
   const { onModalStateChange } = useWalletModalStore();
   const [fromToken, setFromToken] = useState<string>("");
-  const [fromTokenAmount, setFromTokenAmount] = useState<string>("");
+  const [TokenAmount, setTokenAmount] = useState<string>("");
   const [toToken, setToToken] = useState<string>("");
   const [selectedFromDenom, setSelectedFromDenom] = useState<ITokenType>({
     voucher: {},
@@ -86,14 +86,14 @@ export default function Swap() {
 
   const microFromValue = useMemo(() => {
     return convertMacroToMicro(
-      fromTokenAmount,
-      fromTokenMetadata?.token.token_metadata_by_id.coinDecimal ?? 6
+      TokenAmount,
+      toTokenMetadata?.token.token_metadata_by_id.coinDecimal ?? 6
     ).split(".")[0];
-  }, [fromTokenAmount, fromTokenMetadata]);
+  }, [TokenAmount, toTokenMetadata]);
 
   const { data: routes, isLoading: routesLoading } = useGetRoutes({
-    tokenIn: fromToken,
-    tokenOut: toToken,
+    tokenIn: toToken,
+    tokenOut: fromToken,
     amountIn: microFromValue,
   });
 
@@ -109,8 +109,8 @@ export default function Swap() {
     useCodegenGeneratedRouterSimulateSwapQuery({
       variables: {
         router_simulate_swap_amount_in: microFromValue,
-        router_simulate_swap_asset_in: fromToken || "",
-        router_simulate_swap_asset_out: toToken || "",
+        router_simulate_swap_asset_in: toToken || "",
+        router_simulate_swap_asset_out: fromToken || "",
         router_simulate_swap_min_amount_out: "1",
         router_simulate_swap_swaps: route ?? [],
       },
@@ -120,9 +120,9 @@ export default function Swap() {
   const macroAmountOut = useMemo(() => {
     return convertMicroToMacro(
       simulateSwapResult?.router.simulate_swap.amount_out ?? "0",
-      toTokenMetadata?.token.token_metadata_by_id.coinDecimal ?? 6
+      fromTokenMetadata?.token.token_metadata_by_id.coinDecimal ?? 6
     );
-  }, [simulateSwapResult, toTokenMetadata]);
+  }, [simulateSwapResult, fromTokenMetadata]);
 
   const { mutateAsync: executeSwap, isPending } = useExecuteSwap();
 
@@ -131,7 +131,7 @@ export default function Swap() {
   const handleSwap = async () => {
     try {
       console.log("Attempting to execute swap with the following parameters:", {
-        amountIn: microFromValue,
+        amountIn: simulateSwapResult?.router.simulate_swap.amount_out|| null,
         assetIn: {
           token: fromToken!,
           token_type: selectedFromDenom!,
@@ -153,7 +153,7 @@ export default function Swap() {
       });
 
       const tx = await executeSwap({
-        amountIn: microFromValue,
+        amountIn: simulateSwapResult?.router.simulate_swap.amount_out||"0",
         assetIn: {
           token: fromToken!,
           token_type: selectedFromDenom!,
@@ -170,7 +170,7 @@ export default function Swap() {
             ]
           : [],
         minAmountOut: "1",
-        swaps: route || [],
+        swaps: route.toReversed() || [],
         timeout: 600,
       });
 
@@ -203,8 +203,8 @@ export default function Swap() {
           onClick={() =>
             onOpenModal({
               tokens: tokens?.router.all_tokens.tokens ?? [],
-              title: "Select From Token",
-              description: "Select token which you want to convert",
+              title: "Tranfer With",
+              description: "Select token with which you want to Transfer ",
               onTokenSelect: (token) => setFromToken(token),
             })
           }
@@ -220,8 +220,8 @@ export default function Swap() {
           onClick={() =>
             onOpenModal({
               tokens: tokens?.router.all_tokens.tokens ?? [],
-              title: "Select To Token",
-              description: "Select token you want to convert to",
+              title: "Transfer Token",
+              description: "Select token you want to Transfer",
               onTokenSelect: (token) => setToToken(token),
             })
           }
@@ -234,34 +234,34 @@ export default function Swap() {
 
       {/* Amount Input */}
       <Input
-        value={fromTokenAmount}
-        onChange={(e) => setFromTokenAmount(e.target.value)}
+        value={TokenAmount}
+        onChange={(e) => setTokenAmount(e.target.value)}
         placeholder="Enter the amount"
         className="text-lg bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 w-full"
       />
 
       {/* Conversion Preview */}
-      {fromToken && toToken && fromTokenAmount && (
+      {fromToken && toToken && TokenAmount && (
         <div className="flex flex-row items-center justify-center gap-4 bg-gray-800 rounded-lg p-4 w-full">
           <div className="flex flex-row justify-start gap-2">
             <Token token={fromToken} />
-            <p className="text-white ml-4">{fromTokenAmount || "0.00"}</p>
+            <p className="text-white ml-4">
+              {macroAmountOut ? parseFloat(macroAmountOut).toFixed(5) : "0.00"}
+            </p>
           </div>
 
           <ArrowRight className="text-white" size={24} />
 
           <div className="flex flex-row items-center gap-3">
             <Token token={toToken} />
-            <p className="text-white ml-3">
-              {macroAmountOut ? parseFloat(macroAmountOut).toFixed(5) : "0.00"}
-            </p>
+            <p className="text-white ml-3">{TokenAmount || "0.00"}</p>
           </div>
         </div>
       )}
 
       {/* Send to user */}
       <section>
-        <span className="m-2 text-white/70">Send To</span>
+        <span className="m-2 text-white/70">Tranfer To</span>
         <div className="flex flex-row items-center justify-center gap-4 rounded-2xl bg-gray-900 p-4 w-full">
           <TooltipProvider>
             <Tooltip>
@@ -313,7 +313,7 @@ export default function Swap() {
       </div>
 
       {/**Advance options*/}
-      {fromToken && toToken && fromTokenAmount && (
+      {fromToken && toToken && TokenAmount && (
         <section>
           <div>
             <Dialog>
@@ -383,11 +383,6 @@ export default function Swap() {
                     </Select>
                   )}
                 </div>
-                {/* Slippage
-                            <div>Slippage</div>
-                            <DialogFooter>
-                                <Button type="submit">Save changes</Button>
-                            </DialogFooter> */}
               </DialogContent>
             </Dialog>
           </div>
